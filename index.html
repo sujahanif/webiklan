@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MACSUS Company — Layanan Service, Maintenance, dan Upgrade Laptop profesional di Surabaya. Diagnosa transparan, teknisi berpengalaman, garansi pekerjaan." />
+  <meta name="keywords" content="service laptop surabaya, upgrade laptop, maintenance laptop, ganti thermal paste, ganti SSD, MACSUS, laptop repair surabaya ITS" />
+  <meta name="author" content="MACSUS Company" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#3182CE" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="MACSUS Company" />
+  <meta property="og:locale"      content="id_ID" />
+  <meta property="og:url"         content="https://macsus-company.netlify.app/" />
+  <meta property="og:title"       content="MACSUS Company — Professional Laptop Surgery & System Optimization" />
+  <meta property="og:description" content="Solusi perbaikan laptop transparan dan berbasis data di Surabaya. Diagnosa gratis, teknisi berpengalaman, garansi pekerjaan. Dekat kampus ITS & Hang Tuah." />
+  <meta property="og:image"       content="https://macsus-company.netlify.app/default.png" />
+  <meta property="og:image:secure_url" content="https://macsus-company.netlify.app/default.png" />
+  <meta property="og:image:type"  content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="MACSUS Company — Service Laptop Profesional di Surabaya" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@macsus_company" />
+  <meta name="twitter:creator"     content="@macsus_company" />
+  <meta name="twitter:title"       content="MACSUS Company — Professional Laptop Surgery & System Optimization" />
+  <meta name="twitter:description" content="Solusi perbaikan laptop transparan dan berbasis data di Surabaya. Diagnosa gratis, teknisi berpengalaman, garansi pekerjaan." />
+  <meta name="twitter:image"       content="https://macsus-company.netlify.app/default.png" />
+  <meta name="twitter:image:alt"   content="MACSUS Company — Service Laptop Profesional di Surabaya" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "MACSUS Company",
+    "description": "Layanan service, maintenance, dan upgrade laptop profesional di Surabaya. Diagnosa transparan, teknisi berpengalaman, garansi pekerjaan.",
+    "url": "https://macsus-company.netlify.app/",
+    "logo": "https://macsus-company.netlify.app/default.png",
+    "image": "https://macsus-company.netlify.app/default.png",
+    "telephone": ["+6285852561993", "+6285737232372"],
+    "priceRange": "Rp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Kejawan Gebang No.26",
+      "addressLocality": "Surabaya",
+      "addressRegion": "Jawa Timur",
+      "postalCode": "60116",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -7.289017,
+      "longitude": 112.796039
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "21:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "bestRating": "5",
+      "ratingCount": "2000"
+    }
+  }
+  </script>
+
+  <title>MACSUS Company — Professional Laptop Surgery & System Optimization</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+  <nav id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="MACSUS Company Home">
+        <div class="nav-logo-mark" aria-hidden="true">M</div>
+        MACSUS<span style="color:var(--electric);">.</span>
+      </a>
+
+      <div class="nav-links" role="menubar">
+        <a href="#services" role="menuitem">Layanan</a>
+        <a href="#process" role="menuitem">Proses</a>
+        <a href="#why-us" role="menuitem">Mengapa Kami</a>
+        <a href="#testimonials" role="menuitem">Testimoni</a>
+        <a href="#location" role="menuitem">Lokasi</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light Mode" title="Toggle theme"><i class="fa-solid fa-sun"></i></button>
+        <a href="https://wa.me/6285852561993?text=Halo%20MACSUS%2C%20saya%20ingin%20berkonsultasi%20mengenai%20laptop%20saya."
+           target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 21.656l.918-.334A9.937 9.937 0 0 0 12 23.5C17.799 23.5 22.5 18.799 22.5 13S17.799 2.5 12 2.5 1.5 7.201 1.5 13a10.01 10.01 0 0 0 1.574 5.431L1.5 22.5l4.839-1.344z"/></svg>
+          Konsultasi Gratis
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav" role="menu">
+      <a href="#services" role="menuitem">Layanan</a>
+      <a href="#process" role="menuitem">Proses</a>
+      <a href="#why-us" role="menuitem">Mengapa Kami</a>
+      <a href="#testimonials" role="menuitem">Testimoni</a>
+      <a href="#location" role="menuitem">Lokasi</a>
+    </div>
+  </nav>
+
+  <main id="content">
+  <section id="hero" aria-label="Hero Section">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-glow-2" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge" role="note">
+          <span class="hero-badge-dot" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          Surabaya · Sidoarjo · Est. 2018
+        </div>
+
+        <h1 class="hero-title">
+          Professional<br/>
+          <span class="text-gradient">Laptop Surgery</span><br/>
+          & System Optimization.
+        </h1>
+
+        <p class="hero-subtitle">
+          Solusi perbaikan laptop transparan dan berbasis data di Surabaya. Kami tidak hanya memperbaiki — kami mengoptimalkan perangkat Anda untuk performa puncak jangka panjang.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/6285852561993?text=Halo%20MACSUS%2C%20saya%20ingin%20konsultasi%20mengenai%20masalah%20laptop%20saya."
+             target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 21.656l.918-.334A9.937 9.937 0 0 0 12 23.5C17.799 23.5 22.5 18.799 22.5 13S17.799 2.5 12 2.5 1.5 7.201 1.5 13a10.01 10.01 0 0 0 1.574 5.431L1.5 22.5l4.839-1.344z"/></svg>
+            Diagnosa Gratis Sekarang
+          </a>
+          <a href="#services" class="btn btn-outline">Lihat Layanan ↓</a>
+        </div>
+
+        <div class="hero-meta" role="region" aria-label="Key Statistics">
+          <div class="hero-stat">
+            <div class="hero-stat-number" aria-label="2000 plus satisfied customers">2.000+</div>
+            <div class="hero-stat-label">Pelanggan Puas</div>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" aria-label="Rating 4.5 bintang">4.5★</div>
+            <div class="hero-stat-label">Google Maps Rating</div>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">6+</div>
+            <div class="hero-stat-label">Tahun Pengalaman</div>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">2</div>
+            <div class="hero-stat-label">Cabang Aktif</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-3d" role="img" aria-label="Interactive 3D Laptop Model">
+        <canvas id="three-canvas"></canvas>
+        <div class="three-hint" aria-hidden="true">drag to rotate · scroll to zoom</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="trust-bar" role="complementary" aria-label="Trust Indicators">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <span>Diagnosa Gratis & Transparan</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+          <span>Garansi Pekerjaan Tertulis</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+          <span>Estimasi Waktu Akurat</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></div>
+          <span>Laporan Teknis Detail</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+          <span>Update Real-Time via WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Service Catalog</div>
+        <h2 class="section-title" id="services-heading">
+          Solusi Teknis<br/><span class="text-gradient">Komprehensif & Presisi</span>
+        </h2>
+        <p class="section-desc">
+          Setiap layanan dirancang dengan standar teknis tinggi, menggunakan komponen bergaransi, dan dilaporkan secara transparan kepada pelanggan.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card featured animate-on-scroll">
+          <div>
+            <div class="service-number">01 — Deep Maintenance</div>
+            <h3 class="service-title">Deep Cleaning & Thermal Restoration</h3>
+            <p class="service-desc">
+              Prosedur pembersihan komprehensif menggunakan standar industri: pembersihan heatsink, fan, dan PCB dari partikel debu dan oksidasi. Penggantian thermal paste premium (Thermal Grizzly / Arctic MX-5) untuk mengembalikan konduksi panas ke performa optimal. Mencegah throttling, korosi, dan kegagalan hardware jangka panjang.
+            </p>
+            <div class="service-tags">
+              <span class="service-tag highlight"><i class="fa-solid fa-fire" style="margin-right:4px;"></i>Thermal Paste Premium</span>
+              <span class="service-tag highlight">Heatsink Cleaning</span>
+              <span class="service-tag">Anti-Korosi Treatment</span>
+              <span class="service-tag">Fan Balancing</span>
+              <span class="service-tag">Stres Test Post-Service</span>
+            </div>
+          </div>
+          <div class="service-visual" aria-hidden="true">
+            <svg class="service-diagram" viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="60" y="60" width="160" height="100" rx="6" fill="rgba(49,130,206,0.06)" stroke="rgba(49,130,206,0.3)" stroke-width="1.5"/>
+              <line x1="80" y1="80" x2="80" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="110" y1="80" x2="110" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="140" y1="80" x2="140" y2="140" stroke="rgba(49,130,206,0.7)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="170" y1="80" x2="170" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
+              <line x1="200" y1="80" x2="200" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
+              <rect x="100" y="95" width="80" height="30" rx="4" fill="rgba(49,130,206,0.15)" stroke="rgba(49,130,206,0.6)" stroke-width="1.5"/>
+              <text x="140" y="115" fill="rgba(49,130,206,0.9)" font-family="monospace" font-size="9" text-anchor="middle" letter-spacing="0.5">CPU/GPU</text>
+              <rect x="108" y="102" width="64" height="16" rx="2" fill="rgba(246,173,85,0.2)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
+              <circle cx="140" cy="185" r="22" fill="rgba(49,130,206,0.06)" stroke="rgba(49,130,206,0.3)" stroke-width="1.5"/>
+              <text x="140" y="182" fill="rgba(72,187,120,0.9)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="600">55°C</text>
+              <text x="140" y="192" fill="rgba(139,148,158,0.6)" font-family="monospace" font-size="6" text-anchor="middle">OPTIMAL</text>
+              <path d="M80 55 L80 45 M77 48 L80 44 L83 48" stroke="rgba(246,173,85,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M140 55 L140 45 M137 48 L140 44 L143 48" stroke="rgba(246,173,85,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M200 55 L200 45 M197 48 L200 44 L203 48" stroke="rgba(246,173,85,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-wrench"></i></div>
+          <div class="service-number">02 — Hardware Recovery</div>
+          <h3 class="service-title">Component Repair & Board-Level Service</h3>
+          <p class="service-desc">
+            Diagnosa dan perbaikan komponen tingkat lanjut: motherboard, chipset, GPU, layar, keyboard, port I/O, dan sistem pengisian daya. Setiap perbaikan menggunakan komponen bergaransi dengan standar kualitas ketat.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag highlight">Motherboard Repair</span>
+            <span class="service-tag">Screen Replacement</span>
+            <span class="service-tag">Keyboard & Trackpad</span>
+            <span class="service-tag">Charging Port</span>
+          </div>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+          <div class="service-number">03 — Performance Upgrade</div>
+          <h3 class="service-title">Storage & Memory Optimization</h3>
+          <p class="service-desc">
+            Tingkatkan performa laptop secara signifikan melalui upgrade NVMe SSD (Gen 4), ekspansi RAM, dan pembersihan sistem operasi. Kecepatan boot, loading, dan rendering meningkat hingga 3–5x dari kondisi semula.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag highlight">NVMe SSD Upgrade</span>
+            <span class="service-tag">RAM Expansion</span>
+            <span class="service-tag">OS Clean Install</span>
+            <span class="service-tag">Driver Optimization</span>
+          </div>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
+          <div class="service-number">04 — Trade-In & Sales</div>
+          <h3 class="service-title">Certified Pre-Owned Laptop</h3>
+          <p class="service-desc">
+            Layanan jual beli laptop bekas dengan inspeksi teknis menyeluruh (12-point check). Setiap unit yang kami jual telah melalui pengujian stress test, pembersihan mendalam, dan dilengkapi laporan kondisi hardware tertulis.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag highlight">12-Point Inspection</span>
+            <span class="service-tag">Harga Transparan</span>
+            <span class="service-tag">Garansi 30 Hari</span>
+            <span class="service-tag">Data Migration</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Alur Layanan</div>
+        <h2 class="section-title" id="process-heading">Proses Transparan,<br/><span class="text-gradient">Tanpa Kejutan</span></h2>
+        <p class="section-desc">Kami percaya bahwa pelanggan berhak memahami setiap langkah perbaikan. Transparansi adalah standar, bukan opsi tambahan.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step animate-on-scroll">
+          <div class="process-number" aria-hidden="true">01</div>
+          <h3 class="process-title">Penerimaan & Registrasi</h3>
+          <p class="process-desc">Unit diterima, kondisi fisik didokumentasikan, dan Anda mendapatkan nomor tiket layanan untuk tracking real-time.</p>
+        </div>
+        <div class="process-step animate-on-scroll">
+          <div class="process-number" aria-hidden="true">02</div>
+          <h3 class="process-title">Diagnosa di Depan Anda</h3>
+          <p class="process-desc">Pemeriksaan dilakukan secara langsung dan terbuka. Anda melihat sendiri kondisi hardware sebelum kami memulai pekerjaan.</p>
+        </div>
+        <div class="process-step animate-on-scroll">
+          <div class="process-number" aria-hidden="true">03</div>
+          <h3 class="process-title">Estimasi & Persetujuan</h3>
+          <p class="process-desc">Rincian biaya, estimasi waktu, dan spare part yang dibutuhkan dikonfirmasi secara tertulis sebelum pengerjaan dimulai.</p>
+        </div>
+        <div class="process-step animate-on-scroll">
+          <div class="process-number" aria-hidden="true">04</div>
+          <h3 class="process-title">Pengerjaan & Verifikasi</h3>
+          <p class="process-desc">Perbaikan dilakukan dengan standar ketat. Selesai, unit melewati stress test & QC sebelum diserahkan kembali beserta laporan teknis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-us" aria-labelledby="whyus-heading">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content">
+          <div class="section-label animate-on-scroll">Keunggulan Kami</div>
+          <h2 class="section-title animate-on-scroll" id="whyus-heading">
+            Teknisi yang Jujur,<br/><span class="text-gradient">Bukan Sekadar Perbaikan</span>
+          </h2>
+          <p class="section-desc animate-on-scroll" style="text-align:left; margin:0; max-width:none;">
+            Di bawah pengawasan Pak Riza, tim kami tidak hanya berorientasi pada perbaikan cepat — melainkan pada edukasi teknis dan solusi jangka panjang yang benar-benar melindungi investasi hardware Anda.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item animate-on-scroll">
+              <div class="feature-dot" aria-hidden="true"><i class="fa-solid fa-microscope"></i></div>
+              <div>
+                <div class="feature-title">Diagnosa Terbuka di Depan Pelanggan</div>
+                <div class="feature-desc">Anda tidak perlu menerima kata-kata teknisi begitu saja. Seluruh proses diagnosa dilakukan secara visible — Anda melihat, Anda memutuskan.</div>
+              </div>
+            </div>
+            <div class="feature-item animate-on-scroll">
+              <div class="feature-dot" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+              <div>
+                <div class="feature-title">Edukasi Teknis untuk Pengguna</div>
+                <div class="feature-desc">Kami menjelaskan penyebab masalah dan cara mencegahnya agar Anda dapat merawat laptop lebih baik ke depannya.</div>
+              </div>
+            </div>
+            <div class="feature-item animate-on-scroll">
+              <div class="feature-dot" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <div class="feature-title">Pencegahan Korosi & Oksidasi</div>
+                <div class="feature-desc">Prosedur perawatan kami dirancang khusus untuk lingkungan tropis yang rentan terhadap kelembaban — musuh utama komponen laptop.</div>
+              </div>
+            </div>
+            <div class="feature-item animate-on-scroll">
+              <div class="feature-dot" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+              <div>
+                <div class="feature-title">Optimasi Performa Berbasis Data</div>
+                <div class="feature-desc">Menggunakan benchmark tools untuk mengukur performa sebelum dan sesudah servis. Hasilnya nyata, terukur, dan terdokumentasi.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-panel animate-on-scroll" role="region" aria-label="Performance Statistics">
+          <div class="section-label" style="margin-bottom:28px;">Angka yang Bicara</div>
+          <div class="stats-grid">
+            <div class="stat-block">
+              <div class="stat-value" id="counter-1" data-target="2000">0</div>
+              <div class="stat-label">Perangkat Berhasil Diperbaiki</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value" id="counter-2" data-target="98">0<span style="font-size:18px">%</span></div>
+              <div class="stat-label">Tingkat Kepuasan Pelanggan</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value" id="counter-3" data-target="6">0</div>
+              <div class="stat-label">Tahun Pengalaman Operasional</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">24h</div>
+              <div class="stat-label">Rata-rata Waktu Penyelesaian</div>
+            </div>
+          </div>
+
+          <div class="google-rating" role="img" aria-label="Google Maps Rating 4.5 out of 5 stars">
+            <div>
+              <div class="stars" aria-hidden="true">★★★★<span style="opacity:0.4">★</span></div>
+            </div>
+            <div class="rating-info">
+              <div class="rating-score">4.5 / 5.0</div>
+              <div class="rating-source">Rating di Google Maps · Verified Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-label">Testimoni Pelanggan</div>
+        <h2 class="section-title" id="testimonials-heading">Dipercaya oleh Mahasiswa<br/><span class="text-gradient">dan Para Profesional</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 5 bintang">★★★★★</div>
+          <p class="testimonial-text">
+            "Laptop saya sempat mati total setelah terkena air. Tim MACSUS berhasil mendiagnosa kerusakan di level board dan memperbaikinya dalam waktu kurang dari 24 jam. Yang paling berkesan, mereka menjelaskan setiap langkah perbaikan dengan sangat jelas."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Ahmad R." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Ahmad R.</div>
+              <div class="author-role">Mahasiswa Teknik Informatika, ITS</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 5 bintang">★★★★★</div>
+          <p class="testimonial-text">
+            "Upgrade ke NVMe SSD dan tambah RAM di MACSUS adalah keputusan terbaik. Boot time laptop saya turun dari 2 menit menjadi 8 detik. Mereka juga memberikan laporan benchmark sebelum dan sesudah, sangat profesional."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Dewi W." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Dewi W.</div>
+              <div class="author-role">Data Analyst, Perusahaan Swasta</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 5 bintang">★★★★★</div>
+          <p class="testimonial-text">
+            "Sudah 3 kali periksa laptop ke MACSUS. Konsistensi kualitas dan kejujuran mereka dalam menyampaikan kondisi laptop adalah alasan utama saya selalu kembali. Tidak ada biaya tersembunyi, semuanya transparan."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Rizky H." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Rizky H.</div>
+              <div class="author-role">Software Engineer, Remote Worker</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 4 bintang">★★★★<span style="opacity:0.3">★</span></div>
+          <p class="testimonial-text">
+            "Laptop gaming saya mengalami thermal throttling parah. Setelah deep cleaning dan penggantian thermal paste, suhu CPU turun 20°C dan performa gaming meningkat signifikan. Prosedurnya dilakukan di depan saya, tidak ada yang disembunyikan."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Muhammad F." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Muhammad F.</div>
+              <div class="author-role">Content Creator & Gamer</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 5 bintang">★★★★★</div>
+          <p class="testimonial-text">
+            "Beli laptop bekas di MACSUS cabang Sidoarjo. Prosesnya sangat meyakinkan — ada inspeksi 12 titik, stress test, dan laporan kondisi tertulis. Harganya juga wajar untuk kualitas yang diberikan. Sangat direkomendasikan."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Sari I." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Sari I.</div>
+              <div class="author-role">Dosen Universitas Swasta, Sidoarjo</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars" aria-label="Rating: 5 bintang">★★★★★</div>
+          <p class="testimonial-text">
+            "Sangat mengapresiasi pendekatan edukatif MACSUS. Saya tidak hanya mendapatkan laptop yang diperbaiki, tapi juga pemahaman tentang cara merawatnya dengan benar. Ini adalah nilai lebih yang jarang ditemukan di tempat servis lain."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="default.png" alt="Foto profil Budi P." loading="lazy" />
+            </div>
+            <div>
+              <div class="author-name">Budi P.</div>
+              <div class="author-role">Arsitek, Surabaya</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" aria-labelledby="location-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll" style="text-align:left;">
+        <div class="section-label">Lokasi Kami</div>
+        <h2 class="section-title" id="location-heading">Temukan Kami<br/><span class="text-gradient">di Surabaya & Sidoarjo</span></h2>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-info">
+          <div class="location-cards animate-on-scroll">
+            <div class="location-card" role="article">
+              <div class="location-pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="location-name">MACSUS — Surabaya (Pusat)</div>
+                <div class="location-address">
+                  Jl. Kejawan Gebang No.26, Kec. Mulyorejo,<br/>
+                  Surabaya 60116<br/>
+                  <em style="font-size:11px; color:var(--electric); font-style:normal; margin-top:4px; display:block;">Dekat Kampus ITS & Universitas Hang Tuah</em>
+                </div>
+              </div>
+            </div>
+            <div class="location-card" role="article">
+              <div class="location-pin" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="location-name">MACSUS — Sidoarjo (Cabang)</div>
+                <div class="location-address">
+                  Gedangan, Sidoarjo<br/>
+                  Jawa Timur
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="animate-on-scroll">
+            <div class="section-label" style="margin-bottom:16px;">Hubungi Kami</div>
+            <div class="contact-list" role="list">
+              <div class="contact-item" role="listitem">
+                <div class="contact-item-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <div class="contact-value">0858-5256-1993</div>
+                  <div style="font-size:11px; color:var(--text-muted);">WhatsApp / Telepon (Utama)</div>
+                </div>
+              </div>
+              <div class="contact-item" role="listitem">
+                <div class="contact-item-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <div class="contact-value">0857-3723-2372</div>
+                  <div style="font-size:11px; color:var(--text-muted);">WhatsApp / Telepon (Alternatif)</div>
+                </div>
+              </div>
+              <div class="contact-item" role="listitem">
+                <div class="contact-item-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                  <div style="font-weight:600; font-size:14px;">Senin – Minggu</div>
+                  <div style="font-size:11px; color:var(--text-muted);">08.00 – 21.00 WIB</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="https://wa.me/6285852561993?text=Halo%20MACSUS%2C%20saya%20ingin%20mengunjungi%20lokasi%20Anda."
+                 target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Kami
+              </a>
+              <a href="https://maps.app.goo.gl/surabaya-macsus" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <i class="fa-solid fa-map-location-dot"></i> Buka di Maps
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-wrapper animate-on-scroll" role="complementary" aria-label="Google Maps Location">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.1804297866853!2d112.79603937580948!3d-7.289017292723888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb4e49d2b1c1%3A0x81f5fdeceb888900!2sJl.%20Kejawan%20Gebang%2C%20Sukolilo%2C%20Kec.%20Sukolilo%2C%20Surabaya%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi MACSUS Company, Jl. Kejawan Gebang, Surabaya"
+            aria-label="Peta lokasi MACSUS Company di Surabaya">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" aria-label="Call to Action">
+    <div class="container">
+      <div class="cta-box animate-on-scroll">
+        <div class="section-label" style="margin-bottom:20px;">Mulai Sekarang</div>
+        <h2 class="cta-title">
+          Laptop Anda Bermasalah?<br/>
+          <span class="text-gradient">Diagnosa Pertama Gratis.</span>
+        </h2>
+        <p class="cta-desc">
+          Jangan tunggu hingga kerusakan meluas. Konsultasikan kondisi laptop Anda sekarang dan dapatkan diagnosa teknis yang jujur, transparan, dan tanpa biaya. Tim kami siap membantu.
+        </p>
+        <div class="cta-actions">
+          <a href="https://wa.me/6285852561993?text=Halo%20MACSUS%2C%20saya%20ingin%20diagnosa%20laptop%20saya.%20Bisa%20dibantu%3F"
+             target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="font-size:15px; padding:15px 32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 21.656l.918-.334A9.937 9.937 0 0 0 12 23.5C17.799 23.5 22.5 18.799 22.5 13S17.799 2.5 12 2.5 1.5 7.201 1.5 13a10.01 10.01 0 0 0 1.574 5.431L1.5 22.5l4.839-1.344z"/></svg>
+            Hubungi via WhatsApp
+          </a>
+          <a href="tel:+6285852561993" class="btn btn-outline" style="font-size:15px; padding:15px 32px;">
+            <i class="fa-solid fa-phone"></i> Telepon Langsung
+          </a>
+        </div>
+        <div class="operating-hours">
+          <div class="hours-dot" aria-hidden="true"></div>
+          Buka Setiap Hari · 08.00 – 21.00 WIB
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">M</div>
+            MACSUS Company
+          </div>
+          <p class="footer-tagline">
+            Layanan service, maintenance, dan upgrade laptop profesional di Surabaya. Transparan, terpercaya, dan berorientasi solusi jangka panjang.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-heading">Layanan</div>
+          <nav class="footer-links" aria-label="Services Navigation">
+            <a href="#services">Hardware Recovery</a>
+            <a href="#services">Performance Upgrade</a>
+            <a href="#services">Deep Maintenance</a>
+            <a href="#services">Trade-In & Sales</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-heading">Informasi</div>
+          <nav class="footer-links" aria-label="Information Navigation">
+            <a href="#process">Alur Layanan</a>
+            <a href="#why-us">Keunggulan Kami</a>
+            <a href="#testimonials">Testimoni</a>
+            <a href="#location">Lokasi & Jam Buka</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-heading">Kontak</div>
+          <div class="footer-links" role="list">
+            <a href="https://wa.me/6285852561993" target="_blank" rel="noopener noreferrer" role="listitem">
+              <i class="fa-solid fa-mobile-screen"></i> 0858-5256-1993
+            </a>
+            <a href="https://wa.me/6285737232372" target="_blank" rel="noopener noreferrer" role="listitem">
+              <i class="fa-solid fa-mobile-screen"></i> 0857-3723-2372
+            </a>
+            <span style="font-size:13px; color:var(--text-muted);" role="listitem">
+              <i class="fa-solid fa-clock"></i> 08.00 – 21.00 WIB
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2025 <span>MACSUS Company</span>. All rights reserved. · Surabaya, Jawa Timur.
+        </p>
+        <p class="footer-copy">
+          Dibuat dengan presisi teknis untuk pengalaman pengguna terbaik.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="wa-float" role="complementary" aria-label="WhatsApp Quick Contact">
+    <div class="wa-float-tooltip" aria-hidden="true">Konsultasi Gratis via WhatsApp</div>
+    <a href="https://wa.me/6285852561993?text=Halo%20MACSUS%2C%20saya%20ingin%20berkonsultasi."
+       target="_blank" rel="noopener noreferrer"
+       class="wa-float-btn"
+       aria-label="Hubungi MACSUS via WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M5.339 21.656l.918-.334A9.937 9.937 0 0 0 12 23.5C17.799 23.5 22.5 18.799 22.5 13S17.799 2.5 12 2.5 1.5 7.201 1.5 13a10.01 10.01 0 0 0 1.574 5.431L1.5 22.5l4.839-1.344z"/>
+      </svg>
+    </a>
+  </div>
+
+  <button id="back-top" aria-label="Kembali ke atas halaman" title="Kembali ke atas"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="script.js"></script>
+
+</body>
+</html>
