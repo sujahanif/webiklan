@@ -62,7 +62,7 @@
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.5",
+      "ratingValue": "4.9",
       "bestRating": "5",
       "ratingCount": "2000"
     }
@@ -160,7 +160,7 @@
           </div>
           <div class="hero-stat-divider" aria-hidden="true"></div>
           <div class="hero-stat">
-            <div class="hero-stat-number" aria-label="Rating 4.5 bintang">4.5★</div>
+            <div class="hero-stat-number" aria-label="Rating 4.9 bintang">4.9★</div>
             <div class="hero-stat-label">Google Maps Rating</div>
           </div>
           <div class="hero-stat-divider" aria-hidden="true"></div>
@@ -224,83 +224,203 @@
 
       <div class="services-grid">
         <article class="service-card featured animate-on-scroll">
+          
+          <!-- ================= KOLOM KIRI (TEKS & TOMBOL) ================= -->
           <div>
             <div class="service-number">01 — Deep Maintenance</div>
-            <h3 class="service-title">Deep Cleaning & Thermal Restoration</h3>
+            <h3 class="service-title">Pembersihan Total & Perawatan Sistem Pendingin</h3>
             <p class="service-desc">
               Prosedur pembersihan komprehensif menggunakan standar industri: pembersihan heatsink, fan, dan PCB dari partikel debu dan oksidasi. Penggantian thermal paste premium (Thermal Grizzly / Arctic MX-5) untuk mengembalikan konduksi panas ke performa optimal. Mencegah throttling, korosi, dan kegagalan hardware jangka panjang.
             </p>
+
             <div class="service-tags">
-              <span class="service-tag highlight"><i class="fa-solid fa-fire" style="margin-right:4px;"></i>Thermal Paste Premium</span>
-              <span class="service-tag highlight">Heatsink Cleaning</span>
-              <span class="service-tag">Anti-Korosi Treatment</span>
-              <span class="service-tag">Fan Balancing</span>
-              <span class="service-tag">Stres Test Post-Service</span>
+              <span class="service-tag highlight" data-target="penjelasan-thermal"><i class="fa-solid fa-fire" style="margin-right:4px;"></i>Thermal Paste Premium</span>
+              <span class="service-tag" data-target="penjelasan-heatsink">Heatsink Cleaning</span>
+              <span class="service-tag" data-target="penjelasan-fan">Fan Balancing</span>
+              <span class="service-tag" data-target="penjelasan-stres">Stres Test Post-Service</span>
+            </div>
+
+            <!-- KOTAK PENJELASAN DINAMIS -->
+            <div class="dynamic-explanation-box">
+              
+              <div id="penjelasan-default" class="expl-content active">
+                <p style="font-size: 12px; color: var(--text-muted); font-style: italic; margin: 0;"><i class="fa-solid fa-hand-pointer" style="margin-right: 6px;"></i>Pilih salah satu label di atas untuk membaca detail teknis prosedurnya.</p>
+              </div>
+
+              <div id="penjelasan-thermal" class="expl-content">
+                <div class="expl-title">Thermal Paste Premium</div>
+                <p class="expl-desc">Kami menggunakan merk premium sekelas Thermal Grizzly / Arctic MX-5 yang terbukti mampu menurunkan suhu secara ekstrem. Mencegah laptop mengalami penurunan performa (throttling).</p>
+              </div>
+
+              <div id="penjelasan-heatsink" class="expl-content">
+                <div class="expl-title">Heatsink Cleaning</div>
+                <p class="expl-desc">Kami membongkar total sistem pendingin, menyikat habis debu mikro yang membandel pada sirip heatsink agar laptop Anda bisa kembali "bernapas" lega dengan sirkulasi udara maksimal.</p>
+              </div>
+
+              <div id="penjelasan-fan" class="expl-content">
+                <div class="expl-title">Fan Balancing</div>
+                <p class="expl-desc">Kipas dibersihkan dan disesuaikan kembali keseimbangannya. Menghilangkan bunyi bising dan getaran aneh, memastikan baling-baling berputar mulus seperti baru.</p>
+              </div>
+
+              <div id="penjelasan-stres" class="expl-content">
+                <div class="expl-title">Stres Test Post-Service</div>
+                <p class="expl-desc">Laptop akan dipaksa berjalan pada kinerja 100% menggunakan software benchmark sebelum dikembalikan ke pelanggan. Memastikan suhu benar-benar stabil dan aman saat digunakan bekerja berat.</p>
+              </div>
+
+            </div> <!-- Tutup dynamic-explanation-box -->
+          </div> <!-- TUTUP KOLOM KIRI (Ini penutup yang sebelumnya hilang!) -->
+          
+          <!-- ================= KOLOM KANAN (GAMBAR DIAGRAM) ================= -->
+  
+          <!-- ================= KOLOM KANAN (GAMBAR DIAGRAM/VISUAL DINAMIS) ================= -->
+          <div class="service-visual" aria-hidden="true">
+            
+            <!-- Visual Default (Tampil pertama kali) -->
+            <div id="visual-default" class="visual-content active">
+              <img src="logos/contoh.png" alt="Pilih Layanan" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <!-- Visual 1: Thermal Paste -->
+            <div id="visual-thermal" class="visual-content">
+              <img src="logos/thermalpaste.png" alt="Thermal Paste" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <!-- Visual 2: Heatsink Cleaning -->
+            <div id="visual-heatsink" class="visual-content">
+              <img src="logos/heatsink.png" alt="Heatsink Cleaning" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <!-- Visual 4: Fan Balancing -->
+            <div id="visual-fan" class="visual-content">
+              <img src="logos/fan.png" alt="Fan Balancing" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <!-- Visual 5: Stres Test -->
+            <div id="visual-stres" class="visual-content">
+              <img src="logos/stress test.png" alt="Stres Test" style="width: 100%; border-radius: 8px;">
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ==================== KARTU 2: HARDWARE RECOVERY ==================== -->
+        <article class="service-card featured animate-on-scroll">
+          
+          <!-- Kolom Kiri -->
+          <div>
+            <div class="service-icon" aria-hidden="true" style="margin-bottom: 16px; color: var(--electric); font-size: 24px;"><i class="fa-solid fa-wrench"></i></div>
+            <div class="service-number">02 — Hardware Recovery</div>
+            <h3 class="service-title">Perbaikan Komponen & Servis Motherboard</h3>
+            <p class="service-desc">
+              Diagnosa dan perbaikan komponen tingkat lanjut: motherboard, chipset, GPU, layar, keyboard, port I/O, dan sistem pengisian daya. Setiap perbaikan menggunakan komponen bergaransi dengan standar kualitas ketat.
+            </p>
+
+            <div class="service-interactive-area">
+              <div class="service-tags">
+                <span class="service-tag highlight" data-target="penjelasan-mobo">Motherboard Repair</span>
+                <span class="service-tag" data-target="penjelasan-screen">Screen Replacement</span>
+                <span class="service-tag" data-target="penjelasan-keyboard">Keyboard & Trackpad</span>
+                <span class="service-tag" data-target="penjelasan-port">Charging Port</span>
+              </div>
+
+              <div class="dynamic-explanation-box">
+                <!-- Teks default -->
+                <div id="penjelasan-default-2" class="expl-content">
+                  <p style="font-size: 12px; color: var(--text-muted); font-style: italic; margin: 0;"><i class="fa-solid fa-hand-pointer" style="margin-right: 6px;"></i>Pilih label di kiri untuk melihat detail.</p>
+                </div>
+                <!-- Penjelasan -->
+                <div id="penjelasan-mobo" class="expl-content active">
+                  <div class="expl-title">Motherboard Repair</div>
+                  <p class="expl-desc">Perbaikan sirkuit mikro, IC power, dan penggantian komponen kapasitor/resistor yang mati total (matot) tanpa harus mengganti seluruh papan motherboard.</p>
+                </div>
+                <div id="penjelasan-screen" class="expl-content">
+                  <div class="expl-title">Screen Replacement</div>
+                  <p class="expl-desc">Penggantian panel LCD/LED berbagai resolusi yang pecah, bergaris, atau blank putih dengan part original dan garansi dead-pixel.</p>
+                </div>
+                <div id="penjelasan-keyboard" class="expl-content">
+                  <div class="expl-title">Keyboard & Trackpad</div>
+                  <p class="expl-desc">Solusi untuk tombol yang tertukar, mati sebagian, atau trackpad yang tidak responsif. Penggantian dilakukan dengan sangat presisi.</p>
+                </div>
+                <div id="penjelasan-port" class="expl-content">
+                  <div class="expl-title">Charging Port</div>
+                  <p class="expl-desc">Perbaikan port DC-in atau Type-C yang goyang/longgar agar arus listrik kembali stabil dan mencegah korsleting saat pengisian daya.</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Kolom Kanan (Gambar Visual) -->
           <div class="service-visual" aria-hidden="true">
-            <svg class="service-diagram" viewBox="0 0 280 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="60" y="60" width="160" height="100" rx="6" fill="rgba(49,130,206,0.06)" stroke="rgba(49,130,206,0.3)" stroke-width="1.5"/>
-              <line x1="80" y1="80" x2="80" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
-              <line x1="110" y1="80" x2="110" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
-              <line x1="140" y1="80" x2="140" y2="140" stroke="rgba(49,130,206,0.7)" stroke-width="6" stroke-linecap="round"/>
-              <line x1="170" y1="80" x2="170" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
-              <line x1="200" y1="80" x2="200" y2="140" stroke="rgba(49,130,206,0.5)" stroke-width="6" stroke-linecap="round"/>
-              <rect x="100" y="95" width="80" height="30" rx="4" fill="rgba(49,130,206,0.15)" stroke="rgba(49,130,206,0.6)" stroke-width="1.5"/>
-              <text x="140" y="115" fill="rgba(49,130,206,0.9)" font-family="monospace" font-size="9" text-anchor="middle" letter-spacing="0.5">CPU/GPU</text>
-              <rect x="108" y="102" width="64" height="16" rx="2" fill="rgba(246,173,85,0.2)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
-              <circle cx="140" cy="185" r="22" fill="rgba(49,130,206,0.06)" stroke="rgba(49,130,206,0.3)" stroke-width="1.5"/>
-              <text x="140" y="182" fill="rgba(72,187,120,0.9)" font-family="monospace" font-size="9" text-anchor="middle" font-weight="600">55°C</text>
-              <text x="140" y="192" fill="rgba(139,148,158,0.6)" font-family="monospace" font-size="6" text-anchor="middle">OPTIMAL</text>
-              <path d="M80 55 L80 45 M77 48 L80 44 L83 48" stroke="rgba(246,173,85,0.5)" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M140 55 L140 45 M137 48 L140 44 L143 48" stroke="rgba(246,173,85,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M200 55 L200 45 M197 48 L200 44 L203 48" stroke="rgba(246,173,85,0.5)" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
+            <div id="visual-mobo" class="visual-content active">
+              <img src="logos/Motherboard.png" alt="Motherboard Repair" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-screen" class="visual-content">
+              <img src="logos/Screen.png" alt="Screen" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-keyboard" class="visual-content">
+              <img src="logos/Keyboard.png" alt="Keyboard" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-port" class="visual-content">
+              <img src="logos/Charging.png" alt="Port" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
           </div>
         </article>
 
-        <article class="service-card animate-on-scroll">
-          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-wrench"></i></div>
-          <div class="service-number">02 — Hardware Recovery</div>
-          <h3 class="service-title">Component Repair & Board-Level Service</h3>
-          <p class="service-desc">
-            Diagnosa dan perbaikan komponen tingkat lanjut: motherboard, chipset, GPU, layar, keyboard, port I/O, dan sistem pengisian daya. Setiap perbaikan menggunakan komponen bergaransi dengan standar kualitas ketat.
-          </p>
-          <div class="service-tags">
-            <span class="service-tag highlight">Motherboard Repair</span>
-            <span class="service-tag">Screen Replacement</span>
-            <span class="service-tag">Keyboard & Trackpad</span>
-            <span class="service-tag">Charging Port</span>
-          </div>
-        </article>
+        <!-- ==================== KARTU 3: PERFORMANCE UPGRADE ==================== -->
+        <article class="service-card featured animate-on-scroll">
+          
+          <!-- Kolom Kiri -->
+          <div>
+            <div class="service-icon" aria-hidden="true" style="margin-bottom: 16px; color: var(--electric); font-size: 24px;"><i class="fa-solid fa-bolt"></i></div>
+            <div class="service-number">03 — Performance Upgrade</div>
+            <h3 class="service-title">Optimasi Penyimpanan & Memori (RAM/SSD)</h3>
+            <p class="service-desc">
+              Tingkatkan performa laptop secara signifikan melalui upgrade NVMe SSD (Gen 4), ekspansi RAM, dan pembersihan sistem operasi. Kecepatan boot meningkat hingga 3–5x.
+            </p>
 
-        <article class="service-card animate-on-scroll">
-          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
-          <div class="service-number">03 — Performance Upgrade</div>
-          <h3 class="service-title">Storage & Memory Optimization</h3>
-          <p class="service-desc">
-            Tingkatkan performa laptop secara signifikan melalui upgrade NVMe SSD (Gen 4), ekspansi RAM, dan pembersihan sistem operasi. Kecepatan boot, loading, dan rendering meningkat hingga 3–5x dari kondisi semula.
-          </p>
-          <div class="service-tags">
-            <span class="service-tag highlight">NVMe SSD Upgrade</span>
-            <span class="service-tag">RAM Expansion</span>
-            <span class="service-tag">OS Clean Install</span>
-            <span class="service-tag">Driver Optimization</span>
-          </div>
-        </article>
+            <div class="service-interactive-area">
+              <div class="service-tags">
+                <span class="service-tag highlight" data-target="penjelasan-ssd">NVMe SSD Upgrade</span>
+                <span class="service-tag" data-target="penjelasan-ram">RAM Expansion</span>
+                <span class="service-tag" data-target="penjelasan-os">OS Clean Install</span>
+                <span class="service-tag" data-target="penjelasan-driver">Driver Optimization</span>
+              </div>
 
-        <article class="service-card animate-on-scroll">
-          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
-          <div class="service-number">04 — Trade-In & Sales</div>
-          <h3 class="service-title">Certified Pre-Owned Laptop</h3>
-          <p class="service-desc">
-            Layanan jual beli laptop bekas dengan inspeksi teknis menyeluruh (12-point check). Setiap unit yang kami jual telah melalui pengujian stress test, pembersihan mendalam, dan dilengkapi laporan kondisi hardware tertulis.
-          </p>
-          <div class="service-tags">
-            <span class="service-tag highlight">12-Point Inspection</span>
-            <span class="service-tag">Harga Transparan</span>
-            <span class="service-tag">Garansi 30 Hari</span>
-            <span class="service-tag">Data Migration</span>
+              <div class="dynamic-explanation-box">
+                <div id="penjelasan-ssd" class="expl-content active">
+                  <div class="expl-title">NVMe SSD Upgrade</div>
+                  <p class="expl-desc">Migrasi dari Hardisk lama ke SSD NVMe super cepat. Kami menjamin pemindahan data (cloning) yang aman 100% tanpa ada file yang hilang.</p>
+                </div>
+                <div id="penjelasan-ram" class="expl-content">
+                  <div class="expl-title">RAM Expansion</div>
+                  <p class="expl-desc">Penambahan kapasitas RAM untuk multitasking tanpa lag. Kami memastikan kecocokan frekuensi (MHz) agar berjalan lancar secara Dual-Channel.</p>
+                </div>
+                <div id="penjelasan-os" class="expl-content">
+                  <div class="expl-title">OS Clean Install</div>
+                  <p class="expl-desc">Instal ulang Windows murni tanpa bloatware (aplikasi bawaan yang memberatkan). Laptop akan terasa sangat segar dan ringan.</p>
+                </div>
+                <div id="penjelasan-driver" class="expl-content">
+                  <div class="expl-title">Driver Optimization</div>
+                  <p class="expl-desc">Pembaruan BIOS dan kalibrasi seluruh driver hardware untuk memastikan komponen berjalan di performa maksimalnya tanpa error.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan (Gambar Visual) -->
+          <div class="service-visual" aria-hidden="true">
+            <div id="visual-ssd" class="visual-content active">
+              <img src="logos/ssd.png" alt="SSD" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-ram" class="visual-content">
+              <img src="logos/ram.png" alt="RAM" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-os" class="visual-content">
+              <img src="logos/os.png" alt="OS" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
+            <div id="visual-driver" class="visual-content">
+              <img src="logos/driver.png" alt="Driver" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-md);">
+            </div>
           </div>
         </article>
       </div>
@@ -311,8 +431,10 @@
     <div class="container">
       <div class="section-header animate-on-scroll">
         <div class="section-label">Alur Layanan</div>
-        <h2 class="section-title" id="process-heading">Proses Transparan,<br/><span class="text-gradient">Tanpa Kejutan</span></h2>
-        <p class="section-desc">Kami percaya bahwa pelanggan berhak memahami setiap langkah perbaikan. Transparansi adalah standar, bukan opsi tambahan.</p>
+        <h2 class="section-title" id="process-heading">Proses Transparan,<br/><span class="text-gradient">Analisis, Amanah, dan Akad Salam</span></h2>
+        <p class="section-desc">
+          Setiap perangkat melalui tahap <strong>analisis</strong> mendalam secara terbuka. Kami memegang teguh <strong>amanah</strong> dalam menjaga privasi data serta kualitas perbaikan, dan memastikan kesepakatan layanan (<strong>akad salam</strong>) yang jelas di awal demi kenyamanan bersama.
+        </p>
       </div>
 
       <div class="process-grid">
@@ -346,10 +468,10 @@
         <div class="why-content">
           <div class="section-label animate-on-scroll">Keunggulan Kami</div>
           <h2 class="section-title animate-on-scroll" id="whyus-heading">
-            Teknisi yang Jujur,<br/><span class="text-gradient">Bukan Sekadar Perbaikan</span>
+            Teknisi yang Jujur dan berpengalaman,<br/><span class="text-gradient">Bukan Sekadar Perbaikan</span>
           </h2>
           <p class="section-desc animate-on-scroll" style="text-align:left; margin:0; max-width:none;">
-            Di bawah pengawasan Pak Riza, tim kami tidak hanya berorientasi pada perbaikan cepat — melainkan pada edukasi teknis dan solusi jangka panjang yang benar-benar melindungi investasi hardware Anda.
+            Tim teknisi profesional kami tidak hanya berorientasi pada perbaikan cepat — melainkan pada edukasi teknis dan solusi jangka panjang yang benar-benar melindungi investasi hardware Anda.
           </p>
 
           <div class="feature-list">
@@ -410,7 +532,7 @@
               <div class="stars" aria-hidden="true">★★★★<span style="opacity:0.4">★</span></div>
             </div>
             <div class="rating-info">
-              <div class="rating-score">4.8 / 5.0</div>
+              <div class="rating-score">4.9 / 5.0</div>
               <div class="rating-source">Rating di Google Maps · Verified Reviews</div>
             </div>
           </div>
@@ -423,11 +545,16 @@
   <div class="container">
     <div class="section-header animate-on-scroll">
       <div class="section-label">Dipercaya Oleh</div>
+      <h2 class="section-title">
+        Instansi & Perusahaan<br/>
+        <span class="text-gradient">Yang Pernah Bekerja Sama Dengan Kami</span>
+      </h2>
     </div>
+    
     
     <div class="clients-grid animate-on-scroll">
       <div class="client-category">
-        <div class="client-title">PROFESIONAL BIROKRASI</div>
+        <h3 class="category-title">INSTANSI PEMERINTAHAN & BUMN</h3>
         <div class="client-logo-wrapper">
           <img src="logos/PLN.png" alt="PLN" title="PLN">
           <img src="logos/brin.png" alt="BRIN" title="BRIN">
@@ -437,7 +564,7 @@
       </div>
 
       <div class="client-category">
-        <div class="client-title">PROFESIONAL SWASTA</div>
+        <h3 class="category-title">PERUSAHAAN SWASTA</h3>
         <div class="client-logo-wrapper">
           <img src="logos/msu.png" alt="PT. Multicapital" title="PT. Multicapital">
           <img src="logos/jne.png" alt="JNE" title="JNE">
@@ -446,13 +573,13 @@
       </div>
 
       <div class="client-category">
-        <div class="client-title">KAMPUS</div>
+        <<h3 class="category-title">INSTITUSI PENDIDIKAN</h3>
         <div class="client-logo-wrapper">
-          <img src="logos/its.png" alt="ITS" title="ITS">
-          <img src="logos/unair.png" alt="UNAIR" title="UNAIR">
-          <img src="logos/unesa.png" alt="UNESA" title="UNESA">
-          <img src="logos/hangtuah.png" alt="Hang Tuah" title="Hang Tuah">
-          <img src="logos/unesa.png" alt="UNESA" title="UNESA">
+          <img src="logos/kampus/its.png" alt="ITS" title="ITS">
+          <img src="logos/kampus/unair.png" alt="UNAIR" title="UNAIR">
+          <img src="logos/kampus/unesa.png" alt="UNESA" title="UNESA">
+          <img src="logos/kampus/hangtuah.png" alt="Hang Tuah" title="Hang Tuah">
+          <img src="logos/kampus/ubaya.png" alt="UNESA" title="UNESA">
         </div>
       </div>
     </div>
@@ -464,7 +591,7 @@
     <div class="container">
       <div class="section-header animate-on-scroll">
         <div class="section-label">Bukti Nyata</div>
-        <h2 class="section-title" id="portfolio-heading">Hasil Perbaikan <br/><span class="text-gradient">Before & After</span></h2>
+        <h2 class="section-title" id="portfolio-heading">Hasil Perbaikan <br/><span class="text-gradient">terdokumentasi</span></h2>
         <p class="section-desc">Geser panah di tengah gambar ke kiri dan kanan untuk melihat perbedaan sebelum dan sesudah perbaikan dilakukan oleh tim MACSUS.</p>
       </div>
 
@@ -475,9 +602,9 @@
           <h3 class="portfolio-title">1. Deep Cleaning & Thermal Paste</h3>
           <div class="comparison-slider">
             <!-- Gambar After (Bawah) -->
-            <img src="https://via.placeholder.com/600x400/1a1a1a/00E5FF?text=Sesudah+(After)" alt="Sesudah Dibersihkan" class="img-after">
+            <img src="logos/after.jpg" alt="Sesudah Dibersihkan" class="img-after">
             <!-- Gambar Before (Atas) -->
-            <img src="https://via.placeholder.com/600x400/4a4a4a/ffffff?text=Sebelum+(Before)" alt="Sebelum Dibersihkan" class="img-before">
+            <img src="logos/before.png" alt="Sebelum Dibersihkan" class="img-before">
             
             <input type="range" min="0" max="100" value="50" class="slider" aria-label="Geser untuk membandingkan gambar">
             <div class="slider-line" aria-hidden="true">
@@ -579,12 +706,16 @@
         </div>
 
         <div class="map-wrapper animate-on-scroll">
-  <iframe
-    src="https://maps.app.goo.gl/SCtp3JoYzhGDwHRw7"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+  <!-- Peta Lokasi MACSUS Surabaya yang sudah diperbaiki -->
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.7554378125615!2d112.7915357!3d-7.2680489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f9780164c017%3A0xc48c1871638686a9!2sMACSUS%20-%20Surabaya%20(Pusat)!5e0!3m2!1sid!2sid!4v1714644026848!5m2!1sid!2sidhttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.59368369324!2d112.79346407585966!3d-7.286987492720232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa114407ad37%3A0x664971c26f0490!2sJl.%20Kejawan%20Gebang%20No.26%2C%20Gebang%20Putih%2C%20Kec.%20Mulyorejo%2C%20Surabaya%2C%20Jawa%20Timur%2060115!5e0!3m2!1sid!2sid!4v1713760000000!5m2!1sid!2sid" 
+  width="100%" 
+  height="100%" 
+  style="border:0; min-height: 450px; border-radius: 15px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 </div>
       </div>
     </div>
@@ -606,9 +737,6 @@
              target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="font-size:15px; padding:15px 32px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.339 21.656l.918-.334A9.937 9.937 0 0 0 12 23.5C17.799 23.5 22.5 18.799 22.5 13S17.799 2.5 12 2.5 1.5 7.201 1.5 13a10.01 10.01 0 0 0 1.574 5.431L1.5 22.5l4.839-1.344z"/></svg>
             Hubungi via WhatsApp
-          </a>
-          <a href="tel:+6285852561993" class="btn btn-outline" style="font-size:15px; padding:15px 32px;">
-            <i class="fa-solid fa-phone"></i> Telepon Langsung
           </a>
         </div>
         <div class="operating-hours">

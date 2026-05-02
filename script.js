@@ -521,24 +521,44 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 });
 
 /* =============================================
-   8. SERVICE TAGS INTERACTION
+   8. SERVICE TAGS INTERACTION (DYNAMIC TABS & IMAGES)
 ============================================= */
 (function() {
-  // 1. Mencari seluruh elemen HTML yang memiliki class 'service-tag'
-  const serviceTags = document.querySelectorAll('.service-tag');
+  // 1. Mencari tombol, kotak teks, dan kotak gambar
+  const serviceTags = document.querySelectorAll('.service-tags .service-tag');
+  const explContents = document.querySelectorAll('.expl-content');
+  const visualContents = document.querySelectorAll('.visual-content'); // Ini yang baru!
 
-  // 2. Melakukan perulangan untuk memeriksa setiap tag yang ditemukan
   serviceTags.forEach(function(tag) {
-    
-    // 3. Menambahkan 'Event Listener' khusus untuk mendeteksi tindakan klik
     tag.addEventListener('click', function() {
-      
-      // 4. Mengambil teks dari tag yang sedang diklik (contoh: "Fan Balancing")
-      const namaFitur = this.innerText;
-      
-      // 5. Menampilkan kotak pesan interaktif (alert) di layar
-      alert("Anda memilih informasi tentang: " + namaFitur + "\n\nSilakan hubungi admin kami untuk penjelasan teknis lebih detail mengenai layanan ini.");
-      
+      const targetId = this.getAttribute('data-target'); // contoh: "penjelasan-thermal"
+
+      if (targetId) {
+        // 2. Matikan efek menyala pada tombol
+        serviceTags.forEach(function(t) { t.classList.remove('highlight'); });
+        
+        // 3. Sembunyikan semua teks
+        explContents.forEach(function(content) { content.classList.remove('active'); });
+
+        // 4. Sembunyikan semua gambar
+        visualContents.forEach(function(visual) { visual.classList.remove('active'); });
+
+        // 5. Nyalakan tombol yang diklik
+        this.classList.add('highlight');
+
+        // 6. Munculkan teks yang sesuai
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.classList.add('active');
+        }
+
+        // 7. Munculkan gambar yang sesuai (Ubah "penjelasan-..." jadi "visual-...")
+        const visualId = targetId.replace('penjelasan-', 'visual-'); // contoh: "visual-thermal"
+        const targetVisual = document.getElementById(visualId);
+        if (targetVisual) {
+          targetVisual.classList.add('active');
+        }
+      }
     });
   });
 })();
@@ -563,6 +583,46 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
       imgBefore.style.width = pergerakan + "%";
       // Memindahkan garis putih pembatas agar selalu di tengah slider
       sliderLine.style.left = pergerakan + "%";
+    });
+  });
+})();
+
+/* =============================================
+   8. SERVICE TAGS INTERACTION (DYNAMIC TABS)
+============================================= */
+(function() {
+  // 1. Mencari semua tombol tag dan semua isi penjelasan
+  const serviceTags = document.querySelectorAll('.service-tags .service-tag');
+  const explContents = document.querySelectorAll('.expl-content');
+
+  // 2. Memberikan perintah pada setiap tombol
+  serviceTags.forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      // Mengambil identitas target dari tombol yang diklik
+      const targetId = this.getAttribute('data-target');
+
+      // Pastikan tombol yang diklik memiliki target penjelasan
+      if (targetId) {
+        
+        // 3. Matikan efek menyala (highlight) dari semua tombol tag
+        serviceTags.forEach(function(t) { 
+          t.classList.remove('highlight'); 
+        });
+        
+        // 4. Sembunyikan semua teks penjelasan yang sedang terbuka
+        explContents.forEach(function(content) { 
+          content.classList.remove('active'); 
+        });
+
+        // 5. Nyalakan efek (highlight) khusus pada tombol yang baru saja diklik
+        this.classList.add('highlight');
+
+        // 6. Munculkan teks penjelasan yang sesuai dengan ID tombolnya
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.classList.add('active');
+        }
+      }
     });
   });
 })();

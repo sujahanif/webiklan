@@ -684,3 +684,73 @@ footer { background: var(--midnight); border-top: 1px solid var(--border); paddi
   width: 36px; height: 36px; border-radius: 50%; background: var(--electric); color: #fff;
   display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+/* =============================================
+   17. DYNAMIC EXPLANATION BOX (TABS)
+============================================= */
+.dynamic-explanation-box {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--midnight-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-height: 110px; /* Menjaga ukuran kotak agar tidak naik-turun */
+}
+
+.expl-content {
+  display: none; /* Sembunyikan semua teks dari awal */
+  animation: fadeIn 0.4s ease; /* Efek muncul pelan-pelan */
+}
+
+/* Hanya yang memiliki class 'active' yang akan ditampilkan */
+.expl-content.active {
+  display: block;
+}
+
+.expl-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--electric);
+  margin-bottom: 6px;
+}
+
+.expl-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =============================================
+   19. DYNAMIC VISUAL IMAGES
+============================================= */
+.visual-content {
+  display: none; /* Sembunyikan semua gambar secara default */
+  animation: fadeIn 0.4s ease; /* Efek muncul pelan-pelan agar elegan */
+  width: 100%;
+}
+
+.visual-content.active {
+  display: block; /* Hanya tampilkan gambar yang aktif */
+}
+
+/* Mengatur ukuran dan proporsi gambar agar tidak memanjang */
+.visual-content img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Mengatur rasio gambar menjadi proporsional (seperti foto landscape standar) */
+  object-fit: cover; /* Memastikan gambar tidak gepeng/terdistorsi */
+  border-radius: var(--radius-md); /* Memberikan efek lengkung di sudut gambar */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan halus agar gambar lebih menonjol */
+}
+
+/* =========================================
+   MEMPERBESAR LOGO KLIEN
+========================================= */
+.client-category img {
+  max-width: 140px !important; /* Memperbesar batas lebar logo */
+  max-height: 80px !important; /* Memperbesar batas tinggi logo */
+  height: auto;
+  width: auto;
+  object-fit: contain; /* Menjaga agar logo tidak gepeng */
+  margin: 10px; /* Memberi sedikit jarak antar logo agar tidak berdempetan */
+}
