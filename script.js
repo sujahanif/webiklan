@@ -519,3 +519,50 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     }
   });
 });
+
+/* =============================================
+   8. SERVICE TAGS INTERACTION
+============================================= */
+(function() {
+  // 1. Mencari seluruh elemen HTML yang memiliki class 'service-tag'
+  const serviceTags = document.querySelectorAll('.service-tag');
+
+  // 2. Melakukan perulangan untuk memeriksa setiap tag yang ditemukan
+  serviceTags.forEach(function(tag) {
+    
+    // 3. Menambahkan 'Event Listener' khusus untuk mendeteksi tindakan klik
+    tag.addEventListener('click', function() {
+      
+      // 4. Mengambil teks dari tag yang sedang diklik (contoh: "Fan Balancing")
+      const namaFitur = this.innerText;
+      
+      // 5. Menampilkan kotak pesan interaktif (alert) di layar
+      alert("Anda memilih informasi tentang: " + namaFitur + "\n\nSilakan hubungi admin kami untuk penjelasan teknis lebih detail mengenai layanan ini.");
+      
+    });
+  });
+})();
+
+/* =============================================
+   9. IMAGE COMPARISON SLIDER LOGIC
+============================================= */
+(function() {
+  // Mencari semua area slider di dalam website
+  const sliders = document.querySelectorAll('.comparison-slider');
+
+  sliders.forEach(function(container) {
+    const sliderInput = container.querySelector('.slider');
+    const imgBefore = container.querySelector('.img-before');
+    const sliderLine = container.querySelector('.slider-line');
+
+    // Mendengarkan setiap gerakan (input) pada slider
+    sliderInput.addEventListener('input', function(e) {
+      const pergerakan = e.target.value; // Mendapatkan nilai angka 0-100
+      
+      // Mengubah lebar gambar 'Before' agar mengikuti angka slider
+      imgBefore.style.width = pergerakan + "%";
+      // Memindahkan garis putih pembatas agar selalu di tengah slider
+      sliderLine.style.left = pergerakan + "%";
+    });
+  });
+})();

@@ -431,10 +431,23 @@ ul { list-style: none; }
 .service-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
 
 .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
 .service-tag {
   font-family: var(--font-mono); font-size: 10px; padding: 4px 10px;
   border-radius: 4px; background: var(--midnight-4); color: var(--text-muted); border: 1px solid var(--border);
+  /* --- Tambahan Baru di Bawah Ini --- */
+  cursor: pointer; /* Mengubah kursor menjadi tangan saat diarahkan */
+  transition: all 0.3s ease; /* Membuat efek perubahan warna menjadi halus */
 }
+
+/* Efek saat label disentuh oleh mouse (Hover) */
+.service-tag:hover {
+  transform: scale(1.05); /* Label akan sedikit membesar */
+  border-color: var(--electric);
+  color: var(--electric);
+  background: var(--electric-glow);
+}
+
 .service-tag.highlight { background: var(--electric-glow); color: var(--electric); border-color: rgba(0, 229, 255, 0.25); }
 
 .service-visual { position: relative; display: flex; align-items: center; justify-content: center; }
@@ -585,4 +598,89 @@ footer { background: var(--midnight); border-top: 1px solid var(--border); paddi
   .process-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .trust-bar-inner { gap: 24px; }
+}
+
+/* =============================================
+   14. CLIENTS LOGO STYLING
+============================================= */
+#clients {
+  padding: 80px 0;
+  background: var(--midnight);
+  border-top: 1px solid var(--border);
+}
+
+.client-category {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.client-logo-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 24px;
+}
+
+.client-logo-wrapper img {
+  height: 45px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  /* Baris filter grayscale dan opacity sudah dihapus di sini */
+  transition: all 0.3s ease;
+}
+
+.client-logo-wrapper img:hover {
+  /* Sisakan efek membesar sedikit saat disentuh agar tetap interaktif */
+  transform: scale(1.1); 
+}
+@media (max-width: 768px) {
+  .client-logo-wrapper { gap: 20px; }
+  .client-logo-wrapper img { height: 35px; }
+}
+
+/* =============================================
+   16. IMAGE COMPARISON SLIDER (BEFORE/AFTER)
+============================================= */
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+@media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+.portfolio-item { background: var(--midnight); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.portfolio-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; text-align: center; }
+
+/* Kotak utama slider dengan rasio 3:2 */
+.comparison-slider {
+  position: relative; width: 100%; height: 0; padding-bottom: 66.66%; 
+  overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--border);
+}
+
+.comparison-slider img {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;
+}
+
+/* Gambar 'Before' selalu di atas dan berbatasan garis */
+.img-before { width: 50%; z-index: 2; border-right: 2px solid var(--electric); }
+
+/* Input penggeser tak kasat mata */
+.slider {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: transparent; outline: none; margin: 0;
+  -webkit-appearance: none; appearance: none; z-index: 4; cursor: ew-resize;
+}
+
+.slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 40px; height: 100%; background: transparent; cursor: ew-resize; }
+.slider::-moz-range-thumb { width: 40px; height: 100%; background: transparent; border: none; cursor: ew-resize; }
+
+/* Garis pembatas dan tombol indikator panah */
+.slider-line {
+  position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: var(--electric);
+  z-index: 3; pointer-events: none; transform: translateX(-50%);
+}
+
+.slider-button {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 36px; height: 36px; border-radius: 50%; background: var(--electric); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
