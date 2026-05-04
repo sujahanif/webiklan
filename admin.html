@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - MACSUS</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 50px;">
+
+    <h2>Admin Panel: Upload Logo Klien</h2>
+    
+    <input type="file" id="inputFoto" accept="image/*">
+    <br><br>
+    
+    <!-- Tombol ini memanggil fungsi uploadFoto() yang kita buat di JavaScript -->
+    <button onclick="uploadFoto()" style="padding: 10px 20px; background: #00b4d8; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Upload ke Supabase
+    </button>
+    <p id="statusPesan" style="color: gray;"></p>
+
+    <!-- ========================================== -->
+    <!-- LOGIKA JAVASCRIPT SUPABASE                 -->
+    <!-- ========================================== -->
+    <script type="module">
+        // 1. Impor Supabase
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        // 2. Masukkan URL dan Kunci dari Dashboard Supabase-mu (Menu Settings -> API)
+        const supabaseUrl = 'https://fcecobrpwwepyztdvyle.supabase.co/rest/v1/'; 
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWNvYnJwd3dlcHl6dGR2eWxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NjMzMjAsImV4cCI6MjA5MzQzOTMyMH0.YCTIY5dXTL4dWsJl-i02xwVNuZaYATjFBSlXOSh1DO4';
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        
+        // 3. Fungsi untuk mengirim foto
+        async function uploadFoto() {
+            const pesan = document.getElementById('statusPesan');
+            const fileInput = document.getElementById('inputFoto');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                pesan.style.color = "red";
+                pesan.innerText = "Pilih foto dulu ya!";
+                return;
+            }
+
+            pesan.style.color = "blue";
+            pesan.innerText = "Sedang mengunggah ke awan... Mohon tunggu.";
+
+            // Kita tentukan nama file yang tetap, misalnya logo untuk instansi pertama
+            const namaFile = "logo-instansi-1.png"; 
+
+            // 4. Proses upload ke bucket 'logo-klien'
+            const { data, error } = await supabase.storage
+                .from('logo-klien')
+                .upload(namaFile, file, {
+                    cacheControl: '3600',
+                    upsert: true // WAJIB TRUE: Agar menimpa foto lama jika namanya sama
+                });
+
+            if (error) {
+                pesan.style.color = "red";
+                pesan.innerText = "Gagal upload: " + error.message;
+            } else {
+                pesan.style.color = "green";
+                pesan.innerText = "Upload Sukses! Silakan cek Storage di Supabase.";
+            }
+        }
+
+        // Ekspos fungsi ke HTML agar tombol onclick bisa bekerja
+        window.uploadFoto = uploadFoto;
+    </script>
+</body>
+</html>
