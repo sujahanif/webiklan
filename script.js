@@ -191,7 +191,7 @@
     // PENTING: Atur ukuran (scale) dan posisi. 
     // Jika laptop terlalu besar/kecil, ubah angka 0.05 di bawah ini
     object.scale.set(0.10, 0.10, 0.10); 
-    object.position.set(0, -0.5, 0); 
+    object.position.set(0, 0.5, 0); 
     
     group.add(object);
   }, 
