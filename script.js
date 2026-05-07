@@ -137,317 +137,114 @@
 })();
 
 /* =============================================
-   6. THREE.JS — INTERACTIVE 3D LAPTOP MODEL
+   6. THREE.JS — INTERACTIVE 3D LAPTOP FBX MODEL
 ============================================= */
 (function() {
   const canvas = document.getElementById('three-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
+  if (!canvas || typeof THREE === 'undefined' || typeof THREE.FBXLoader === 'undefined') return;
 
   // Scene setup
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0.8, 4.5);
+  camera.position.set(0, 1.5, 6); // Posisi kamera agak dijauhkan
 
-  const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    antialias: true,
-    alpha: true
-  });
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setClearColor(0x000000, 0);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // Color palette
-  function getColors() {
-    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    return {
-      base: isDark ? 0x1C2333 : 0xE2E8F0,
-      baseBorder: isDark ? 0x3182CE : 0x2B6CB0,
-      screen: isDark ? 0x0D1117 : 0x1A202C,
-      screenGlow: isDark ? 0x3182CE : 0x2B6CB0,
-      wireframe: isDark ? 0x3182CE : 0x2B6CB0,
-      emissive: isDark ? 0x1a3a5c : 0x0D2040,
-      keyboard: isDark ? 0x21262D : 0xCBD5E1,
-      keyText: isDark ? 0x4299E1 : 0x2B6CB0,
-    };
-  }
-
-  let c = getColors();
   const group = new THREE.Group();
   scene.add(group);
 
-  // Materials
-  const baseMat = new THREE.MeshPhongMaterial({
-    color: c.base,
-    emissive: 0x111827,
-    shininess: 60,
-  });
-  const lidMat = new THREE.MeshPhongMaterial({
-    color: c.base,
-    emissive: 0x111827,
-    shininess: 60,
-  });
-  const screenMat = new THREE.MeshPhongMaterial({
-    color: c.screen,
-    emissive: c.emissive,
-    emissiveIntensity: 0.6,
-    shininess: 100,
-  });
-  const edgeMat = new THREE.MeshPhongMaterial({
-    color: c.wireframe,
-    emissive: c.wireframe,
-    emissiveIntensity: 0.4,
-  });
-  const keyMat = new THREE.MeshPhongMaterial({
-    color: c.keyboard,
-    shininess: 40,
-  });
-
-  // === LAPTOP BASE ===
-  const baseGeo = new THREE.BoxGeometry(3.2, 0.14, 2.2);
-  const base = new THREE.Mesh(baseGeo, baseMat);
-  base.position.set(0, 0, 0);
-  base.castShadow = true;
-  base.receiveShadow = true;
-  group.add(base);
-
-  // Base edge highlight
-  const edgesBase = new THREE.EdgesGeometry(baseGeo);
-  const baseEdge = new THREE.LineSegments(edgesBase, new THREE.LineBasicMaterial({ color: c.wireframe, transparent: true, opacity: 0.5 }));
-  base.add(baseEdge);
-
-  // === KEYBOARD KEYS (simplified grid) ===
-  const keyGeo = new THREE.BoxGeometry(0.22, 0.03, 0.22);
-  const keyRows = [
-    { z: -0.7, count: 10 },
-    { z: -0.38, count: 9 },
-    { z: -0.06, count: 9 },
-    { z: 0.26, count: 8 },
-  ];
-
-  keyRows.forEach(function(row) {
-    const startX = -(row.count - 1) * 0.265 / 2;
-    for (let i = 0; i < row.count; i++) {
-      const key = new THREE.Mesh(keyGeo, keyMat);
-      key.position.set(startX + i * 0.265, 0.09, row.z);
-      group.add(key);
-    }
-  });
-
-  // Spacebar
-  const spaceGeo = new THREE.BoxGeometry(1.1, 0.03, 0.22);
-  const space = new THREE.Mesh(spaceGeo, keyMat);
-  space.position.set(0, 0.09, 0.58);
-  group.add(space);
-
-  // Touchpad
-  const touchpadGeo = new THREE.BoxGeometry(0.9, 0.01, 0.58);
-  const touchpadMat = new THREE.MeshPhongMaterial({ color: c.keyboard, shininess: 80 });
-  const touchpad = new THREE.Mesh(touchpadGeo, touchpadMat);
-  touchpad.position.set(0, 0.075, 0.82);
-  group.add(touchpad);
-
-  // === LID / SCREEN ASSEMBLY ===
-  const lid = new THREE.Group();
-  lid.position.set(0, 0.07, -1.1);
-  group.add(lid);
-
-  // Lid outer
-  const lidGeo = new THREE.BoxGeometry(3.2, 0.1, 2.15);
-  const lidMesh = new THREE.Mesh(lidGeo, lidMat);
-  lid.add(lidMesh);
-
-  const edgesLid = new THREE.EdgesGeometry(lidGeo);
-  const lidEdge = new THREE.LineSegments(edgesLid, new THREE.LineBasicMaterial({ color: c.wireframe, transparent: true, opacity: 0.4 }));
-  lidMesh.add(lidEdge);
-
-  // Screen bezel inside
-  const bezelGeo = new THREE.BoxGeometry(2.95, 0.11, 1.9);
-  const bezelMat = new THREE.MeshPhongMaterial({ color: 0x090d15, shininess: 40 });
-  const bezel = new THREE.Mesh(bezelGeo, bezelMat);
-  bezel.position.set(0, 0.05, 0.05);
-  lid.add(bezel);
-
-  // Screen display
-  const screenGeo = new THREE.BoxGeometry(2.65, 0.06, 1.62);
-  const screen = new THREE.Mesh(screenGeo, screenMat);
-  screen.position.set(0, 0.09, 0.05);
-  lid.add(screen);
-
-  // Screen scanlines effect (thin lines on screen)
-  const lineCount = 12;
-  for (let i = 0; i < lineCount; i++) {
-    const lineGeo = new THREE.BoxGeometry(2.5, 0.005, 0.015);
-    const lineMat = new THREE.MeshBasicMaterial({
-      color: c.wireframe,
-      transparent: true,
-      opacity: 0.12
-    });
-    const line = new THREE.Mesh(lineGeo, lineMat);
-    line.position.set(0, 0.13, -0.75 + i * 0.135);
-    lid.add(line);
-  }
-
-  // Screen glow elements (pseudo UI)
-  // Top bar
-  const topBarGeo = new THREE.BoxGeometry(2.5, 0.015, 0.14);
-  const topBar = new THREE.Mesh(topBarGeo, new THREE.MeshBasicMaterial({ color: c.wireframe, transparent: true, opacity: 0.35 }));
-  topBar.position.set(0, 0.13, -0.68);
-  lid.add(topBar);
-
-  // Content blocks on screen
-  const contentPositions = [
-    { x: -0.9, z: -0.3, w: 0.6, h: 0.36 },
-    { x: 0.1, z: -0.3, w: 0.8, h: 0.22 },
-    { x: 0.1, z: 0.05, w: 0.8, h: 0.14 },
-    { x: -0.9, z: 0.1, w: 0.6, h: 0.18 },
-    { x: -0.1, z: 0.4, w: 1.6, h: 0.1 },
-  ];
-
-  contentPositions.forEach(function(pos) {
-    const cGeo = new THREE.BoxGeometry(pos.w, 0.015, pos.h);
-    const cMat = new THREE.MeshBasicMaterial({ color: c.wireframe, transparent: true, opacity: 0.2 });
-    const cMesh = new THREE.Mesh(cGeo, cMat);
-    cMesh.position.set(pos.x, 0.13, pos.z);
-    lid.add(cMesh);
-  });
-
-  // Open lid at an angle
-  lid.rotation.x = -Math.PI * 0.62;
-
-  // === HINGE DETAIL ===
-  const hingeGeo = new THREE.CylinderGeometry(0.07, 0.07, 3.0, 16);
-  const hingeMat = new THREE.MeshPhongMaterial({ color: c.wireframe, emissive: c.wireframe, emissiveIntensity: 0.2 });
-  const hinge = new THREE.Mesh(hingeGeo, hingeMat);
-  hinge.rotation.z = Math.PI / 2;
-  hinge.position.set(0, 0.07, -1.1);
-  group.add(hinge);
-
-  // === LIGHTS ===
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  // === PENCAHAYAAN (LIGHTS) ===
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(5, 10, 7);
+  scene.add(directionalLight);
+  const blueLight = new THREE.PointLight(0x00E5FF, 1, 10);
+  blueLight.position.set(-2, 2, 2);
+  scene.add(blueLight);
 
-  const keyLight = new THREE.DirectionalLight(0x7ab7ff, 1.2);
-  keyLight.position.set(3, 5, 3);
-  keyLight.castShadow = true;
-  scene.add(keyLight);
+  // === MEMUAT MODEL FBX & TEKSTUR ===
+  const textureLoader = new THREE.TextureLoader();
+  const fbxLoader = new THREE.FBXLoader();
 
-  const fillLight = new THREE.DirectionalLight(0x3182CE, 0.6);
-  fillLight.position.set(-3, 2, -2);
-  scene.add(fillLight);
+  // Load tekstur dari folder model
+  const baseMap = textureLoader.load('model/Laptop_BaseMap.png');
+  const normalMap = textureLoader.load('model/Laptop_Normal.png');
 
-  const rimLight = new THREE.DirectionalLight(0xffffff, 0.3);
-  rimLight.position.set(0, -2, -4);
-  scene.add(rimLight);
+  // Load file FBX
+  fbxLoader.load('model/Laptop.fbx', function(object) {
+    object.traverse(function(child) {
+      if (child.isMesh) {
+        // Memasang tekstur ke bodi laptop
+        child.material = new THREE.MeshStandardMaterial({
+          map: baseMap,
+          normalMap: normalMap,
+          roughness: 0.4,
+          metalness: 0.8
+        });
+      }
+    });
 
-  // Screen point light (glow effect)
-  const screenLight = new THREE.PointLight(0x3182CE, 1.0, 4);
-  screenLight.position.set(0, 1.2, -1.5);
-  scene.add(screenLight);
+    // PENTING: Atur ukuran (scale) dan posisi. 
+    // Jika laptop terlalu besar/kecil, ubah angka 0.05 di bawah ini
+    object.scale.set(0.10, 0.10, 0.10); 
+    object.position.set(0, -0.5, 0); 
+    
+    group.add(object);
+  }, 
+  function(xhr) { console.log((xhr.loaded / xhr.total * 100) + '% model ter-load'); }, 
+  function(error) { console.error("Gagal memuat model:", error); });
 
-  // === PARTICLE SYSTEM (floating tech dots) ===
+  // === EFEK PARTIKEL BIRU MENGAMBANG ===
   const particleCount = 60;
   const particleGeo = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
   const velocities = [];
-
   for (let i = 0; i < particleCount; i++) {
     positions[i * 3] = (Math.random() - 0.5) * 8;
     positions[i * 3 + 1] = (Math.random() - 0.5) * 5;
     positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
-    velocities.push({
-      x: (Math.random() - 0.5) * 0.004,
-      y: (Math.random() - 0.5) * 0.004,
-      z: (Math.random() - 0.5) * 0.004
-    });
+    velocities.push({ x: (Math.random() - 0.5) * 0.004, y: (Math.random() - 0.5) * 0.004, z: (Math.random() - 0.5) * 0.004 });
   }
-
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const particleMat = new THREE.PointsMaterial({
-    color: 0x3182CE,
-    size: 0.035,
-    transparent: true,
-    opacity: 0.6
-  });
+  const particleMat = new THREE.PointsMaterial({ color: 0x00E5FF, size: 0.035, transparent: true, opacity: 0.6 });
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  // === MOUSE INTERACTION ===
-  let mouseX = 0, mouseY = 0;
-  let targetRotX = 0, targetRotY = 0;
-  let isDragging = false;
-  let lastMouse = { x: 0, y: 0 };
-  let autoRotate = true;
+  // === MOUSE INTERACTION & ANIMASI ===
+  let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
+  let isDragging = false, lastMouse = { x: 0, y: 0 }, autoRotate = true;
 
-  canvas.addEventListener('mousedown', function(e) {
-    isDragging = true;
-    autoRotate = false;
-    lastMouse = { x: e.clientX, y: e.clientY };
-  });
-
-  canvas.addEventListener('mousemove', function(e) {
+  canvas.addEventListener('mousedown', e => { isDragging = true; autoRotate = false; lastMouse = { x: e.clientX, y: e.clientY }; });
+  canvas.addEventListener('mousemove', e => {
     if (isDragging) {
-      const dx = e.clientX - lastMouse.x;
-      const dy = e.clientY - lastMouse.y;
-      targetRotY += dx * 0.008;
-      targetRotX += dy * 0.005;
+      targetRotY += (e.clientX - lastMouse.x) * 0.008;
+      targetRotX += (e.clientY - lastMouse.y) * 0.005;
       targetRotX = Math.max(-0.5, Math.min(0.5, targetRotX));
       lastMouse = { x: e.clientX, y: e.clientY };
     } else {
       const rect = canvas.getBoundingClientRect();
       mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.3;
-      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.2;
     }
   });
+  canvas.addEventListener('mouseup', () => isDragging = false);
+  canvas.addEventListener('mouseleave', () => isDragging = false);
+  canvas.addEventListener('wheel', e => { e.preventDefault(); camera.position.z = Math.max(3, Math.min(10, camera.position.z + e.deltaY * 0.005)); }, { passive: false });
 
-  canvas.addEventListener('mouseup', function() { isDragging = false; });
-  canvas.addEventListener('mouseleave', function() { isDragging = false; });
-
-  // Touch support
-  let lastTouch = null;
-  canvas.addEventListener('touchstart', function(e) {
-    autoRotate = false;
-    lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-  }, { passive: true });
-
-  canvas.addEventListener('touchmove', function(e) {
-    if (!lastTouch) return;
-    const dx = e.touches[0].clientX - lastTouch.x;
-    const dy = e.touches[0].clientY - lastTouch.y;
-    targetRotY += dx * 0.008;
-    targetRotX += dy * 0.005;
-    targetRotX = Math.max(-0.5, Math.min(0.5, targetRotX));
-    lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-  }, { passive: true });
-
-  canvas.addEventListener('touchend', function() { lastTouch = null; });
-
-  // Scroll to zoom
-  canvas.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    camera.position.z = Math.max(2.5, Math.min(7, camera.position.z + e.deltaY * 0.005));
-  }, { passive: false });
-
-  // === RESIZE ===
-  function onResize() {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
+  window.addEventListener('resize', () => {
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
-  }
-  window.addEventListener('resize', onResize);
+  });
 
-  // === ANIMATION LOOP ===
   let time = 0;
-
   function animate() {
     requestAnimationFrame(animate);
     time += 0.01;
 
-    // Auto-rotate when not interacting
     if (autoRotate) {
       targetRotY += 0.003;
       group.rotation.y += (targetRotY - group.rotation.y) * 0.03;
@@ -456,53 +253,21 @@
       group.rotation.y += (targetRotY - group.rotation.y) * 0.08;
       group.rotation.x += (targetRotX - group.rotation.x) * 0.08;
     }
-
-    // Mouse parallax (when not dragging)
-    if (!isDragging) {
-      group.rotation.y += (mouseX - group.rotation.y * 0.1) * 0.01;
-    }
-
-    // Subtle float
+    if (!isDragging) group.rotation.y += (mouseX - group.rotation.y * 0.1) * 0.01;
     group.position.y = Math.sin(time * 0.7) * 0.06;
 
-    // Screen glow pulse
-    screenLight.intensity = 0.8 + Math.sin(time * 1.5) * 0.25;
-    screenMat.emissiveIntensity = 0.5 + Math.sin(time * 1.5) * 0.15;
-
-    // Particle animation
+    // Animasi partikel
     const pos = particles.geometry.attributes.position;
     for (let i = 0; i < particleCount; i++) {
-      pos.array[i * 3] += velocities[i].x;
-      pos.array[i * 3 + 1] += velocities[i].y;
-      pos.array[i * 3 + 2] += velocities[i].z;
-
+      pos.array[i * 3] += velocities[i].x; pos.array[i * 3 + 1] += velocities[i].y; pos.array[i * 3 + 2] += velocities[i].z;
       if (Math.abs(pos.array[i * 3]) > 4) velocities[i].x *= -1;
       if (Math.abs(pos.array[i * 3 + 1]) > 3) velocities[i].y *= -1;
       if (Math.abs(pos.array[i * 3 + 2]) > 3) velocities[i].z *= -1;
     }
     pos.needsUpdate = true;
-
     renderer.render(scene, camera);
   }
-
   animate();
-
-  // Update colors when theme changes
-  const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      setTimeout(function() {
-        c = getColors();
-        baseMat.color.setHex(c.base);
-        lidMat.color.setHex(c.base);
-        screenMat.color.setHex(c.screen);
-        screenMat.emissive.setHex(c.emissive);
-        edgeMat.color.setHex(c.wireframe);
-        keyMat.color.setHex(c.keyboard);
-        particleMat.color.setHex(c.wireframe);
-      }, 50);
-    });
-  }
 })();
 
 /* =============================================
