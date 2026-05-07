@@ -1,73 +1,155 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - MACSUS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin MACSUS - Kelola Foto</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: 'Lexend', sans-serif; background: #f4f4f5; padding: 40px; color: #121212; }
+    .container { max-width: 700px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #0097A7; }
+    h3 { font-size: 16px; margin-bottom: 10px; color: #444; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+    .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; background: #0097A7; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    button:hover { background: #007B88; }
+    .upload-card { border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-top: 15px; background: #fafafa; }
+    .status-msg { font-size: 12px; font-weight: bold; margin-top: 5px; display: block; }
+    #dashboard-section { display: none; }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; padding: 50px;">
+<body>
 
-    <h2>Admin Panel: Upload Logo Klien</h2>
-    
-    <input type="file" id="inputFoto" accept="image/*">
-    <br><br>
-    
-    <!-- Tombol ini memanggil fungsi uploadFoto() yang kita buat di JavaScript -->
-    <button onclick="uploadFoto()" style="padding: 10px 20px; background: #00b4d8; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Upload ke Supabase
-    </button>
-    <p id="statusPesan" style="color: gray;"></p>
+  <div class="container">
+    <div id="login-section">
+      <h2>Login Admin MACSUS</h2>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Masukkan email admin">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Masukkan password">
+      </div>
+      <button onclick="loginAdmin()">Masuk</button>
+      <p id="login-pesan" style="color: red; text-align: center; margin-top: 10px;"></p>
+    </div>
 
-    <!-- ========================================== -->
-    <!-- LOGIKA JAVASCRIPT SUPABASE                 -->
-    <!-- ========================================== -->
-    <script type="module">
-        // 1. Impor Supabase
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    <div id="dashboard-section">
+      <h2>Dashboard Admin MACSUS</h2>
+      <button onclick="logoutAdmin()" style="background: #e74c3c; margin-bottom: 20px;">Keluar (Logout)</button>
+      
+      <!-- 1. IDENTITAS WEB -->
+      <div class="upload-card">
+        <h3>1. Identitas Website</h3>
+        <label>Logo Utama (Navbar)</label>
+        <input type="file" id="file-logo-utama" accept="image/*">
+        <button onclick="uploadFoto('file-logo-utama', 'logo-utama')">Update Logo</button>
+        <span id="status-logo-utama" class="status-msg"></span>
+      </div>
 
-        // 2. Masukkan URL dan Kunci dari Dashboard Supabase-mu (Menu Settings -> API)
-        const supabaseUrl = 'https://fcecobrpwwepyztdvyle.supabase.co/rest/v1/'; 
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWNvYnJwd3dlcHl6dGR2eWxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NjMzMjAsImV4cCI6MjA5MzQzOTMyMH0.YCTIY5dXTL4dWsJl-i02xwVNuZaYATjFBSlXOSh1DO4';
-        const supabase = createClient(supabaseUrl, supabaseKey);
+      <!-- 2. LAYANAN (SERVICES) -->
+      <div class="upload-card">
+        <h3>2. Gambar Layanan</h3>
+        <div style="margin-bottom: 15px;">
+          <label>Layanan 01 (Thermal Paste)</label>
+          <input type="file" id="file-visual-thermal" accept="image/*">
+          <button onclick="uploadFoto('file-visual-thermal', 'visual-thermal')">Update Gambar Thermal</button>
+          <span id="status-visual-thermal" class="status-msg"></span>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label>Layanan 02 (Motherboard)</label>
+          <input type="file" id="file-visual-mobo" accept="image/*">
+          <button onclick="uploadFoto('file-visual-mobo', 'visual-mobo')">Update Gambar Mobo</button>
+          <span id="status-visual-mobo" class="status-msg"></span>
+        </div>
+        <div>
+          <label>Layanan 03 (SSD/RAM)</label>
+          <input type="file" id="file-visual-ssd" accept="image/*">
+          <button onclick="uploadFoto('file-visual-ssd', 'visual-ssd')">Update Gambar SSD</button>
+          <span id="status-visual-ssd" class="status-msg"></span>
+        </div>
+      </div>
 
-        
-        // 3. Fungsi untuk mengirim foto
-        async function uploadFoto() {
-            const pesan = document.getElementById('statusPesan');
-            const fileInput = document.getElementById('inputFoto');
-            const file = fileInput.files[0];
+      <!-- 3. PORTOFOLIO (BEFORE/AFTER) -->
+      <div class="upload-card">
+        <h3>3. Portofolio (Before/After)</h3>
+        <div style="margin-bottom: 15px;">
+          <label>Kasus 1: Before (Kotor)</label>
+          <input type="file" id="file-portofolio-1-before" accept="image/*">
+          <button onclick="uploadFoto('file-portofolio-1-before', 'portofolio-1-before')">Update Before</button>
+          <span id="status-portofolio-1-before" class="status-msg"></span>
+        </div>
+        <div>
+          <label>Kasus 1: After (Bersih)</label>
+          <input type="file" id="file-portofolio-1-after" accept="image/*">
+          <button onclick="uploadFoto('file-portofolio-1-after', 'portfolio-1-after')">Update After</button>
+          <span id="status-portofolio-1-after" class="status-msg"></span>
+        </div>
+      </div>
 
-            if (!file) {
-                pesan.style.color = "red";
-                pesan.innerText = "Pilih foto dulu ya!";
-                return;
-            }
+    </div>
+  </div>
 
-            pesan.style.color = "blue";
-            pesan.innerText = "Sedang mengunggah ke awan... Mohon tunggu.";
+  <script>
+    const urlUtama = 'https://fcecobrpwwepyztdvyle.supabase.co'; 
+    const keyUtama = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWNvYnJwd3dlcHl6dGR2eWxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NjMzMjAsImV4cCI6MjA5MzQzOTMyMH0.YCTIY5dXTL4dWsJl-i02xwVNuZaYATjFBSlXOSh1DO4'; 
+    const supabaseAdmin = window.supabase.createClient(urlUtama, keyUtama);
 
-            // Kita tentukan nama file yang tetap, misalnya logo untuk instansi pertama
-            const namaFile = "logo-instansi-1.png"; 
+    async function loginAdmin() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const pesanError = document.getElementById('login-pesan');
+        const { data, error } = await supabaseAdmin.auth.signInWithPassword({ email, password });
 
-            // 4. Proses upload ke bucket 'logo-klien'
-            const { data, error } = await supabase.storage
-                .from('logo-klien')
-                .upload(namaFile, file, {
-                    cacheControl: '3600',
-                    upsert: true // WAJIB TRUE: Agar menimpa foto lama jika namanya sama
-                });
+        if (error) {
+            pesanError.textContent = "Gagal: " + error.message;
+        } else {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard-section').style.display = 'block';
+        }
+    }
 
-            if (error) {
-                pesan.style.color = "red";
-                pesan.innerText = "Gagal upload: " + error.message;
-            } else {
-                pesan.style.color = "green";
-                pesan.innerText = "Upload Sukses! Silakan cek Storage di Supabase.";
-            }
+    function logoutAdmin() {
+        supabaseAdmin.auth.signOut();
+        location.reload(); 
+    }
+
+    async function uploadFoto(inputId, sectionName) {
+        const fileInput = document.getElementById(inputId);
+        const statusPesan = document.getElementById('status-' + sectionName);
+        if (!fileInput.files[0]) { alert("Pilih file dulu!"); return; }
+
+        statusPesan.textContent = "Mengunggah...";
+        statusPesan.style.color = "orange";
+
+        const file = fileInput.files[0];
+        const pathFile = `${sectionName}-${Date.now()}`;
+
+        const { data: upData, error: upErr } = await supabaseAdmin.storage
+            .from('web_images').upload(pathFile, file);
+
+        if (upErr) {
+            statusPesan.textContent = "Gagal: " + upErr.message;
+            statusPesan.style.color = "red";
+            return;
         }
 
-        // Ekspos fungsi ke HTML agar tombol onclick bisa bekerja
-        window.uploadFoto = uploadFoto;
-    </script>
+        const { data: urlData } = supabaseAdmin.storage.from('web_images').getPublicUrl(pathFile);
+        
+        const { error: dbErr } = await supabaseAdmin
+            .from('site_images').upsert({ section_name: sectionName, image_url: urlData.publicUrl });
+
+        if (dbErr) {
+            statusPesan.textContent = "Gagal Simpan DB: " + dbErr.message;
+            statusPesan.style.color = "red";
+        } else {
+            statusPesan.textContent = "Berhasil!";
+            statusPesan.style.color = "green";
+        }
+    }
+  </script>
 </body>
 </html>

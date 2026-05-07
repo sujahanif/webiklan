@@ -626,3 +626,45 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     });
   });
 })();
+
+/* =============================================
+   20. MENGAMBIL SEMUA FOTO DARI SUPABASE OTOMATIS
+============================================= */
+// A. Inisialisasi Supabase (Ganti dengan URL dan Key milikmu)
+const supabaseUrl = 'https://fcecobrpwwepyztdvyle.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWNvYnJwd3dlcHl6dGR2eWxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NjMzMjAsImV4cCI6MjA5MzQzOTMyMH0.YCTIY5dXTL4dWsJl-i02xwVNuZaYATjFBSlXOSh1DO4';
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// B. Fungsi pintar untuk memuat semua foto sekaligus
+async function loadSemuaFotoDariSupabase() {
+  try {
+    // 1. Minta Supabase mengirimkan semua daftar nama bagian dan URL gambarnya
+    const { data, error } = await supabaseClient
+      .from('site_images')
+      .select('section_name, image_url');
+
+    if (error) {
+      console.warn("Info: Gagal memuat foto dari Supabase, menggunakan foto bawaan.", error.message);
+      return; 
+    }
+
+    // 2. Jika datanya ada, mari kita proses satu per satu (Looping)
+    if (data && data.length > 0) {
+      data.forEach(function(item) {
+        // item.section_name berisi nama seperti 'layanan-thermal', 'portfolio-1-after'
+        // Kita cari elemen di HTML yang ID-nya sama persis dengan nama tersebut
+        const elemenGambar = document.getElementById(item.section_name);
+        
+        // 3. Jika elemennya ketemu di halaman HTML, otomatis ganti URL gambarnya (src)
+        if (elemenGambar) {
+          elemenGambar.src = item.image_url;
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Terjadi kesalahan sistem saat memuat gambar:", err);
+  }
+}
+
+// C. Jalankan fungsi secara otomatis saat website dibuka
+document.addEventListener('DOMContentLoaded', loadSemuaFotoDariSupabase);
