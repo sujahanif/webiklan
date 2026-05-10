@@ -41,7 +41,6 @@
       <h2>Dashboard Admin MACSUS</h2>
       <button onclick="logoutAdmin()" style="background: #e74c3c; margin-bottom: 20px;">Keluar (Logout)</button>
       
-      <!-- 1. IDENTITAS WEB -->
       <div class="upload-card">
         <h3>1. Identitas Website</h3>
         <label>Logo Utama (Navbar)</label>
@@ -50,44 +49,157 @@
         <span id="status-logo-utama" class="status-msg"></span>
       </div>
 
-      <!-- 2. LAYANAN (SERVICES) -->
       <div class="upload-card">
-        <h3>2. Gambar Layanan</h3>
-        <div style="margin-bottom: 15px;">
-          <label>Layanan 01 (Thermal Paste)</label>
-          <input type="file" id="file-visual-thermal" accept="image/*">
-          <button onclick="uploadFoto('file-visual-thermal', 'visual-thermal')">Update Gambar Thermal</button>
-          <span id="status-visual-thermal" class="status-msg"></span>
-        </div>
-        <div style="margin-bottom: 15px;">
-          <label>Layanan 02 (Motherboard)</label>
-          <input type="file" id="file-visual-mobo" accept="image/*">
-          <button onclick="uploadFoto('file-visual-mobo', 'visual-mobo')">Update Gambar Mobo</button>
-          <span id="status-visual-mobo" class="status-msg"></span>
-        </div>
-        <div>
-          <label>Layanan 03 (SSD/RAM)</label>
-          <input type="file" id="file-visual-ssd" accept="image/*">
-          <button onclick="uploadFoto('file-visual-ssd', 'visual-ssd')">Update Gambar SSD</button>
-          <span id="status-visual-ssd" class="status-msg"></span>
-        </div>
-      </div>
+  <h3>2. Gambar Layanan 01 (Deep Maintenance)</h3>
+  <div style="margin-bottom: 10px;">
+    <label>Thermal Paste</label>
+    <input type="file" id="file-visual-thermal" accept="image/*">
+    <button onclick="uploadFoto('file-visual-thermal', 'visual-thermal')">Update Thermal</button>
+    <span id="status-visual-thermal" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>Heatsink Cleaning</label>
+    <input type="file" id="file-visual-heatsink" accept="image/*">
+    <button onclick="uploadFoto('file-visual-heatsink', 'visual-heatsink')">Update Heatsink</button>
+    <span id="status-visual-heatsink" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>Fan Balancing</label>
+    <input type="file" id="file-visual-fan" accept="image/*">
+    <button onclick="uploadFoto('file-visual-fan', 'visual-fan')">Update Fan</button>
+    <span id="status-visual-fan" class="status-msg"></span>
+  </div>
+  <div>
+    <label>Stress Test</label>
+    <input type="file" id="file-visual-stres" accept="image/*">
+    <button onclick="uploadFoto('file-visual-stres', 'visual-stres')">Update Stress Test</button>
+    <span id="status-visual-stres" class="status-msg"></span>
+  </div>
+</div>
 
-      <!-- 3. PORTOFOLIO (BEFORE/AFTER) -->
+<div class="upload-card">
+  <h3>3. Gambar Layanan 02 (Hardware Recovery)</h3>
+  <div style="margin-bottom: 10px;">
+    <label>Motherboard Repair</label>
+    <input type="file" id="file-visual-mobo" accept="image/*">
+    <button onclick="uploadFoto('file-visual-mobo', 'visual-mobo')">Update Motherboard</button>
+    <span id="status-visual-mobo" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>Screen Replacement</label>
+    <input type="file" id="file-visual-screen" accept="image/*">
+    <button onclick="uploadFoto('file-visual-screen', 'visual-screen')">Update Screen</button>
+    <span id="status-visual-screen" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>Keyboard & Trackpad</label>
+    <input type="file" id="file-visual-keyboard" accept="image/*">
+    <button onclick="uploadFoto('file-visual-keyboard', 'visual-keyboard')">Update Keyboard</button>
+    <span id="status-visual-keyboard" class="status-msg"></span>
+  </div>
+  <div>
+    <label>Charging Port</label>
+    <input type="file" id="file-visual-port" accept="image/*">
+    <button onclick="uploadFoto('file-visual-port', 'visual-port')">Update Port</button>
+    <span id="status-visual-port" class="status-msg"></span>
+  </div>
+</div>
+
+<div class="upload-card">
+  <h3>4. Gambar Layanan 03 (Performance Upgrade)</h3>
+  <div style="margin-bottom: 10px;">
+    <label>NVMe SSD Upgrade</label>
+    <input type="file" id="file-visual-ssd" accept="image/*">
+    <button onclick="uploadFoto('file-visual-ssd', 'visual-ssd')">Update SSD</button>
+    <span id="status-visual-ssd" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>RAM Expansion</label>
+    <input type="file" id="file-visual-ram" accept="image/*">
+    <button onclick="uploadFoto('file-visual-ram', 'visual-ram')">Update RAM</button>
+    <span id="status-visual-ram" class="status-msg"></span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>OS Clean Install</label>
+    <input type="file" id="file-visual-os" accept="image/*">
+    <button onclick="uploadFoto('file-visual-os', 'visual-os')">Update OS</button>
+    <span id="status-visual-os" class="status-msg"></span>
+  </div>
+  <div>
+    <label>Driver Optimization</label>
+    <input type="file" id="file-visual-driver" accept="image/*">
+    <button onclick="uploadFoto('file-visual-driver', 'visual-driver')">Update Driver</button>
+    <span id="status-visual-driver" class="status-msg"></span>
+  </div>
+</div>
+
       <div class="upload-card">
         <h3>3. Portofolio (Before/After)</h3>
-        <div style="margin-bottom: 15px;">
-          <label>Kasus 1: Before (Kotor)</label>
-          <input type="file" id="file-portofolio-1-before" accept="image/*">
-          <button onclick="uploadFoto('file-portofolio-1-before', 'portofolio-1-before')">Update Before</button>
-          <span id="status-portofolio-1-before" class="status-msg"></span>
+        
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+          <label><b>Kasus 1: Maintenance Laptop</b></label>
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; font-weight: normal;">Before (Kotor/Lama)</label>
+            <input type="file" id="file-portofolio-1-before" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-1-before', 'portofolio-1-before')">Update Before 1</button>
+            <span id="status-portofolio-1-before" class="status-msg"></span>
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: normal;">After (Bersih/Baru)</label>
+            <input type="file" id="file-portofolio-1-after" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-1-after', 'portofolio-1-after')">Update After 1</button>
+            <span id="status-portofolio-1-after" class="status-msg"></span>
+          </div>
         </div>
+
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+          <label><b>Kasus 2: Layar LCD Rusak</b></label>
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; font-weight: normal;">Before (Layar Pecah/Garis)</label>
+            <input type="file" id="file-portofolio-2-before" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-2-before', 'portofolio-2-before')">Update Before 2</button>
+            <span id="status-portofolio-2-before" class="status-msg"></span>
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: normal;">After (Layar Normal/Baru)</label>
+            <input type="file" id="file-portofolio-2-after" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-2-after', 'portofolio-2-after')">Update After 2</button>
+            <span id="status-portofolio-2-after" class="status-msg"></span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+          <label><b>Kasus 3: Maintenance PC Desktop</b></label>
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; font-weight: normal;">Before (Berdebu/Kotor)</label>
+            <input type="file" id="file-portofolio-3-before" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-3-before', 'portofolio-3-before')">Update Before 3</button>
+            <span id="status-portofolio-3-before" class="status-msg"></span>
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: normal;">After (Bersih/Rapi)</label>
+            <input type="file" id="file-portofolio-3-after" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-3-after', 'portofolio-3-after')">Update After 3</button>
+            <span id="status-portofolio-3-after" class="status-msg"></span>
+          </div>
+        </div>
+
         <div>
-          <label>Kasus 1: After (Bersih)</label>
-          <input type="file" id="file-portofolio-1-after" accept="image/*">
-          <button onclick="uploadFoto('file-portofolio-1-after', 'portfolio-1-after')">Update After</button>
-          <span id="status-portofolio-1-after" class="status-msg"></span>
+          <label><b>Kasus 4: Blue Screen / Software</b></label>
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; font-weight: normal;">Before (Blue Screen/Error)</label>
+            <input type="file" id="file-portofolio-4-before" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-4-before', 'portofolio-4-before')">Update Before 4</button>
+            <span id="status-portofolio-4-before" class="status-msg"></span>
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: normal;">After (Windows Normal)</label>
+            <input type="file" id="file-portofolio-4-after" accept="image/*">
+            <button onclick="uploadFoto('file-portofolio-4-after', 'portofolio-4-after')">Update After 4</button>
+            <span id="status-portofolio-4-after" class="status-msg"></span>
+          </div>
         </div>
+
       </div>
 
     </div>

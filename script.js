@@ -289,39 +289,41 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
    8. SERVICE TAGS INTERACTION (DYNAMIC TABS & IMAGES)
 ============================================= */
 (function() {
-  // 1. Mencari tombol, kotak teks, dan kotak gambar
   const serviceTags = document.querySelectorAll('.service-tags .service-tag');
   const explContents = document.querySelectorAll('.expl-content');
-  const visualContents = document.querySelectorAll('.visual-content'); // Ini yang baru!
+  const visualContents = document.querySelectorAll('.visual-content');
 
   serviceTags.forEach(function(tag) {
     tag.addEventListener('click', function() {
       const targetId = this.getAttribute('data-target'); // contoh: "penjelasan-thermal"
 
       if (targetId) {
-        // 2. Matikan efek menyala pada tombol
+        // 1. Matikan efek menyala pada semua tombol
         serviceTags.forEach(function(t) { t.classList.remove('highlight'); });
         
-        // 3. Sembunyikan semua teks
+        // 2. Sembunyikan semua teks
         explContents.forEach(function(content) { content.classList.remove('active'); });
 
-        // 4. Sembunyikan semua gambar
+        // 3. Sembunyikan semua kotak gambar pembungkus
         visualContents.forEach(function(visual) { visual.classList.remove('active'); });
 
-        // 5. Nyalakan tombol yang diklik
+        // 4. Nyalakan tombol yang sedang diklik
         this.classList.add('highlight');
 
-        // 6. Munculkan teks yang sesuai
+        // 5. Munculkan teks yang sesuai
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
           targetElement.classList.add('active');
         }
 
-        // 7. Munculkan gambar yang sesuai (Ubah "penjelasan-..." jadi "visual-...")
+        // 6. Munculkan gambar yang sesuai
         const visualId = targetId.replace('penjelasan-', 'visual-'); // contoh: "visual-thermal"
         const targetVisual = document.getElementById(visualId);
+        
         if (targetVisual) {
-          targetVisual.classList.add('active');
+          // KUNCI PERBAIKAN: Karena targetVisual sekarang adalah <img>, 
+          // kita wajib memunculkan elemen pembungkusnya (parentElement) yaitu <div>.
+          targetVisual.parentElement.classList.add('active');
         }
       }
     });
