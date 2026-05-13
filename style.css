@@ -1,27 +1,31 @@
 /* =============================================
-   1. CSS CUSTOM PROPERTIES (TEMA UTAMA)
+   1. CSS CUSTOM PROPERTIES (TEMA BARU: DEEP NAVY & COBALT)
 ============================================= */
 :root {
-  /* MODE GELAP (Default) */
-  --midnight: #0a0a0a;       
-  --midnight-2: #121212;     
-  --midnight-3: #1a1a1a;
-  --midnight-4: #222222;
+  /* MODE GELAP - Palet Deep Navy & Cobalt */
+  --midnight: #020617;       
+  --midnight-2: #0f172a;     
+  --midnight-3: #1e293b;     
+  --midnight-4: #334155;
   
-  --electric: #00E5FF;       
-  --electric-light: #66FFFF;
-  --electric-glow: rgba(0, 229, 255, 0.15);
-  --electric-glow-strong: rgba(0, 229, 255, 0.35);
+  --electric: #38bdf8;       
+  --electric-light: #7dd3fc; 
+  --electric-glow: rgba(56, 189, 248, 0.1);
+  --electric-glow-strong: rgba(56, 189, 248, 0.3);
   
-  --text-primary: #FFFFFF;   
-  --text-secondary: #A1A1AA; 
-  --text-muted: #71717A;     
+  --text-primary: #f8fafc;   
+  --text-secondary: #94a3b8; 
+  --text-muted: #64748b;     
   
-  --border: rgba(255, 255, 255, 0.15);
+  --border: rgba(56, 189, 248, 0.2);
   --border-light: rgba(255, 255, 255, 0.05);
-  --surface: rgba(10, 10, 10, 0.95);
-  --surface-hover: rgba(20, 20, 20, 0.98);
+  --surface: rgba(2, 6, 23, 0.95);
+  --surface-hover: rgba(15, 23, 42, 0.98);
+
+  --danger-heat: #f43f5e;    
+  --success-cool: #38bdf8;   
   
+  /* FONT & UKURAN ASLI KAMU (TIDAK BERUBAH) */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -32,25 +36,28 @@
 }
 
 [data-theme="light"] {
-  /* MODE TERANG */
-  --midnight: #FFFFFF;       
-  --midnight-2: #F4F4F5;     
-  --midnight-3: #E4E4E7;
-  --midnight-4: #D4D4D8;
+  /* MODE TERANG - Palet Clean & Pro */
+  --midnight: #ffffff;       
+  --midnight-2: #f8fafc;     
+  --midnight-3: #f1f5f9;
+  --midnight-4: #e2e8f0;
   
-  --text-primary: #000000;   
-  --text-secondary: #52525B; 
-  --text-muted: #A1A1AA;
+  --text-primary: #0f172a;   /* Navy untuk teks utama */
+  --text-secondary: #475569; 
+  --text-muted: #94a3b8;
   
-  --electric: #0097A7;       
-  --electric-light: #00BCD4;
-  --electric-glow: rgba(0, 151, 167, 0.1);
-  --electric-glow-strong: rgba(0, 151, 167, 0.25);
+  --electric: #0284c7;       /* Biru pekat untuk mode terang */
+  --electric-light: #0ea5e9;
+  --electric-glow: rgba(2, 132, 199, 0.1);
+  --electric-glow-strong: rgba(2, 132, 199, 0.2);
 
-  --border: rgba(0, 0, 0, 0.15);
+  --danger-heat: #e11d48;
+  --success-cool: #0284c7;
+
+  --border: rgba(2, 132, 199, 0.15);
   --border-light: rgba(0, 0, 0, 0.05);
   --surface: rgba(255, 255, 255, 0.95);
-  --surface-hover: rgba(244, 244, 245, 0.98);
+  --surface-hover: rgba(248, 250, 252, 0.98);
 }
 
 /* =============================================
@@ -229,8 +236,8 @@ ul { list-style: none; }
 }
 
 .nav-logo-mark {
-  width: 34px; height: 34px;
   background: var(--electric);
+  box-shadow: 0 0 20px var(--electric-glow-strong);
   border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; font-weight: 800; color: #fff;

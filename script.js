@@ -290,41 +290,35 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 ============================================= */
 (function() {
   const serviceTags = document.querySelectorAll('.service-tags .service-tag');
-  const explContents = document.querySelectorAll('.expl-content');
-  const visualContents = document.querySelectorAll('.visual-content');
 
   serviceTags.forEach(function(tag) {
     tag.addEventListener('click', function() {
       const targetId = this.getAttribute('data-target'); // contoh: "penjelasan-thermal"
+      if (!targetId) return;
 
-      if (targetId) {
-        // 1. Matikan efek menyala pada semua tombol
-        serviceTags.forEach(function(t) { t.classList.remove('highlight'); });
-        
-        // 2. Sembunyikan semua teks
-        explContents.forEach(function(content) { content.classList.remove('active'); });
+      // KUNCI PERBAIKAN: Cari 'kartu layanan' (service-card) tempat tombol ini berada
+      const parentCard = this.closest('.service-card');
+      if (!parentCard) return;
 
-        // 3. Sembunyikan semua kotak gambar pembungkus
-        visualContents.forEach(function(visual) { visual.classList.remove('active'); });
+      // 1. Matikan highlight & sembunyikan gambar/teks HANYA di dalam kartu ini
+      parentCard.querySelectorAll('.service-tag').forEach(t => t.classList.remove('highlight'));
+      parentCard.querySelectorAll('.expl-content').forEach(c => c.classList.remove('active'));
+      parentCard.querySelectorAll('.visual-content').forEach(v => v.classList.remove('active'));
 
-        // 4. Nyalakan tombol yang sedang diklik
-        this.classList.add('highlight');
+      // 2. Nyalakan tombol yang baru saja diklik
+      this.classList.add('highlight');
 
-        // 5. Munculkan teks yang sesuai
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.classList.add('active');
-        }
+      // 3. Munculkan teks penjelasan
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) targetElement.classList.add('active');
 
-        // 6. Munculkan gambar yang sesuai
-        const visualId = targetId.replace('penjelasan-', 'visual-'); // contoh: "visual-thermal"
-        const targetVisual = document.getElementById(visualId);
-        
-        if (targetVisual) {
-          // KUNCI PERBAIKAN: Karena targetVisual sekarang adalah <img>, 
-          // kita wajib memunculkan elemen pembungkusnya (parentElement) yaitu <div>.
-          targetVisual.parentElement.classList.add('active');
-        }
+      // 4. Munculkan gambar yang sesuai
+      const visualId = targetId.replace('penjelasan-', 'visual-');
+      const targetVisual = document.getElementById(visualId);
+      
+      if (targetVisual) {
+        // Karena targetVisual adalah <img>, kita aktifkan <div> pembungkusnya
+        targetVisual.parentElement.classList.add('active');
       }
     });
   });
