@@ -137,16 +137,15 @@
 })();
 
 /* =============================================
-   6. THREE.JS — INTERACTIVE 3D LAPTOP FBX MODEL
+   6. THREE.JS — INTERACTIVE 3D LAPTOP GLB MODEL
 ============================================= */
 (function() {
   const canvas = document.getElementById('three-canvas');
-  if (!canvas || typeof THREE === 'undefined' || typeof THREE.FBXLoader === 'undefined') return;
+  if (!canvas || typeof THREE === 'undefined') return;
 
-  // Scene setup
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 1.5, 6); // Posisi kamera agak dijauhkan
+  camera.position.set(0, 1.5, 6); 
 
   const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -156,7 +155,7 @@
   const group = new THREE.Group();
   scene.add(group);
 
-  // === PENCAHAYAAN (LIGHTS) ===
+  // Pencahayaan
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -166,50 +165,20 @@
   blueLight.position.set(-2, 2, 2);
   scene.add(blueLight);
 
-// === MEMUAT MODEL GLB (LEBIH CEPAT & RINGAN) ===
-  const gltfLoader = new THREE.GLTFLoader();
+  // Memuat model GLB
+  if (typeof THREE.GLTFLoader !== 'undefined') {
+    const gltfLoader = new THREE.GLTFLoader();
+    gltfLoader.load('model/Laptop.glb', function(gltf) {
+      const object = gltf.scene;
+      object.scale.set(0.10, 0.10, 0.10); 
+      object.position.set(0, 0.5, 0); 
+      group.add(object);
+    }, 
+    function(xhr) { console.log(Math.round(xhr.loaded / xhr.total * 100) + '% model 3D ter-load'); }, 
+    function(error) { console.error("Gagal memuat model GLB:", error); });
+  }
 
-  // Pastikan kamu sudah mengonversi Laptop.fbx menjadi Laptop.glb
-  gltfLoader.load('model/Laptop.glb', function(gltf) {
-    const object = gltf.scene;
-    
-    // Sesuaikan skala dan posisi jika model GLB ukurannya berbeda
-    object.scale.set(0.10, 0.10, 0.10); 
-    object.position.set(0, 0.5, 0); 
-    
-    group.add(object);
-  }, 
-  function(xhr) { console.log(Math.round(xhr.loaded / xhr.total * 100) + '% model 3D ter-load'); }, 
-  function(error) { console.error("Gagal memuat model GLB:", error); });
-  // Load tekstur dari folder model
-  const baseMap = textureLoader.load('model/Laptop_BaseMap.png');
-  const normalMap = textureLoader.load('model/Laptop_Normal.png');
-
-  // Load file FBX
-  fbxLoader.load('model/Laptop.fbx', function(object) {
-    object.traverse(function(child) {
-      if (child.isMesh) {
-        // Memasang tekstur ke bodi laptop
-        child.material = new THREE.MeshStandardMaterial({
-          map: baseMap,
-          normalMap: normalMap,
-          roughness: 0.4,
-          metalness: 0.8
-        });
-      }
-    });
-
-    // PENTING: Atur ukuran (scale) dan posisi. 
-    // Jika laptop terlalu besar/kecil, ubah angka 0.05 di bawah ini
-    object.scale.set(0.10, 0.10, 0.10); 
-    object.position.set(0, 0.5, 0); 
-    
-    group.add(object);
-  }, 
-  function(xhr) { console.log((xhr.loaded / xhr.total * 100) + '% model ter-load'); }, 
-  function(error) { console.error("Gagal memuat model:", error); });
-
-  // === EFEK PARTIKEL BIRU MENGAMBANG ===
+  // Efek Partikel
   const particleCount = 60;
   const particleGeo = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
@@ -225,7 +194,6 @@
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  // === MOUSE INTERACTION & ANIMASI ===
   let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
   let isDragging = false, lastMouse = { x: 0, y: 0 }, autoRotate = true;
 
@@ -267,7 +235,6 @@
     if (!isDragging) group.rotation.y += (mouseX - group.rotation.y * 0.1) * 0.01;
     group.position.y = Math.sin(time * 0.7) * 0.06;
 
-    // Animasi partikel
     const pos = particles.geometry.attributes.position;
     for (let i = 0; i < particleCount; i++) {
       pos.array[i * 3] += velocities[i].x; pos.array[i * 3 + 1] += velocities[i].y; pos.array[i * 3 + 2] += velocities[i].z;
