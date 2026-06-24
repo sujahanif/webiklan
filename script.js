@@ -137,7 +137,7 @@
 })();
 
 /* =============================================
-   6. THREE.JS — INTERACTIVE 3D LAPTOP GLB MODEL
+   6. THREE.JS — INTERACTIVE 3D LAPTOP FBX MODEL
 ============================================= */
 (function() {
   const canvas = document.getElementById('three-canvas');
@@ -165,20 +165,38 @@
   blueLight.position.set(-2, 2, 2);
   scene.add(blueLight);
 
-  // Memuat model GLB
-  if (typeof THREE.GLTFLoader !== 'undefined') {
-    const gltfLoader = new THREE.GLTFLoader();
-    gltfLoader.load('model/Laptop.glb', function(gltf) {
-      const object = gltf.scene;
+  // === MEMUAT MODEL FBX ===
+  if (typeof THREE.FBXLoader !== 'undefined') {
+    // Mendefinisikan alat pembaca (loader)
+    const textureLoader = new THREE.TextureLoader();
+    const fbxLoader = new THREE.FBXLoader();
+
+    // Membaca tekstur dari folder model kamu
+    const baseMap = textureLoader.load('model/Laptop_BaseMap.png');
+    const normalMap = textureLoader.load('model/Laptop_Normal.png');
+
+    fbxLoader.load('model/Laptop.fbx', function(object) {
+      object.traverse(function(child) {
+        if (child.isMesh) {
+          // Memasang tekstur ke material FBX
+          child.material = new THREE.MeshStandardMaterial({
+            map: baseMap,
+            normalMap: normalMap,
+            roughness: 0.4,
+            metalness: 0.8
+          });
+        }
+      });
+
       object.scale.set(0.10, 0.10, 0.10); 
       object.position.set(0, 0.5, 0); 
       group.add(object);
     }, 
-    function(xhr) { console.log(Math.round(xhr.loaded / xhr.total * 100) + '% model 3D ter-load'); }, 
-    function(error) { console.error("Gagal memuat model GLB:", error); });
+    function(xhr) { console.log(Math.round(xhr.loaded / xhr.total * 100) + '% model 3D FBX ter-load'); }, 
+    function(error) { console.error("Gagal memuat model FBX:", error); });
   }
 
-  // Efek Partikel
+  // Efek Partikel Biru
   const particleCount = 60;
   const particleGeo = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
@@ -194,6 +212,7 @@
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
+  // Interaksi Mouse
   let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
   let isDragging = false, lastMouse = { x: 0, y: 0 }, autoRotate = true;
 
@@ -219,6 +238,7 @@
     camera.updateProjectionMatrix();
   });
 
+  // Animasi
   let time = 0;
   function animate() {
     requestAnimationFrame(animate);
