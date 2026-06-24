@@ -80,7 +80,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <link rel="icon" href="ikon.png" type="image/png" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -581,23 +581,8 @@
 
       <div class="portfolio-grid animate-on-scroll">
         
-        <div class="portfolio-item">
-          <h3 class="portfolio-title">1. Deep Maintenance Laptop</h3>
-          <div class="comparison-slider">
-            <div style="margin-top: 16px; padding: 12px; background: var(--midnight-3); border-radius: 8px; font-size: 13px; color: var(--text-secondary);">
-              <strong style="color: var(--electric);">Metrik Perbaikan:</strong><br/>
-                • Suhu CPU Awal: 95°C (Throttling) ➔ Suhu Akhir: 68°C (Stabil)<br/>
-                • Tindakan: Pembersihan total & pengaplikasian Thermal Grizzly Kryonaut.
-            </div>
-            
-            <img id="portofolio-1-after" src="logos/after.jpg" alt="Sesudah Dibersihkan" class="img-after">
-            <img id="portofolio-1-before" src="logos/before.png" alt="Sebelum Dibersihkan" class="img-before">
-            
-            <input type="range" min="0" max="100" value="50" class="slider" aria-label="Geser untuk membandingkan gambar">
-            <div class="slider-line" aria-hidden="true">
-              <div class="slider-button"><i class="fa-solid fa-arrows-left-right"></i></div>
-            </div>
-          </div>
+        <div class="portfolio-grid animate-on-scroll" id="dynamic-portfolio-container">
+            <!-- Konten akan dirender oleh JavaScript -->
         </div>
 
         <div class="portfolio-item">

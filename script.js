@@ -166,10 +166,21 @@
   blueLight.position.set(-2, 2, 2);
   scene.add(blueLight);
 
-  // === MEMUAT MODEL FBX & TEKSTUR ===
-  const textureLoader = new THREE.TextureLoader();
-  const fbxLoader = new THREE.FBXLoader();
+// === MEMUAT MODEL GLB (LEBIH CEPAT & RINGAN) ===
+  const gltfLoader = new THREE.GLTFLoader();
 
+  // Pastikan kamu sudah mengonversi Laptop.fbx menjadi Laptop.glb
+  gltfLoader.load('model/Laptop.glb', function(gltf) {
+    const object = gltf.scene;
+    
+    // Sesuaikan skala dan posisi jika model GLB ukurannya berbeda
+    object.scale.set(0.10, 0.10, 0.10); 
+    object.position.set(0, 0.5, 0); 
+    
+    group.add(object);
+  }, 
+  function(xhr) { console.log(Math.round(xhr.loaded / xhr.total * 100) + '% model 3D ter-load'); }, 
+  function(error) { console.error("Gagal memuat model GLB:", error); });
   // Load tekstur dari folder model
   const baseMap = textureLoader.load('model/Laptop_BaseMap.png');
   const normalMap = textureLoader.load('model/Laptop_Normal.png');
@@ -429,3 +440,102 @@ async function loadSemuaFotoDariSupabase() {
 
 // C. Jalankan fungsi secara otomatis saat website dibuka
 document.addEventListener('DOMContentLoaded', loadSemuaFotoDariSupabase);
+
+/* =============================================
+   21. RENDER PORTOFOLIO SECARA DINAMIS
+============================================= */
+function renderPortfolio() {
+  const container = document.getElementById('dynamic-portfolio-container');
+  if (!container) return;
+
+  // Data portofolio (Bisa ditambah sampai puluhan tanpa merusak HTML)
+  const portfolioData = [
+    {
+      id: 1,
+      title: "1. Deep Maintenance Laptop",
+      desc: `<strong style="color: var(--electric);">Metrik Perbaikan:</strong><br/>
+             • Suhu CPU Awal: 95°C (Throttling) ➔ Suhu Akhir: 68°C (Stabil)<br/>
+             • Tindakan: Pembersihan total & pengaplikasian Thermal Grizzly Kryonaut.`,
+      beforeId: "portofolio-1-before",
+      afterId: "portofolio-1-after",
+      defaultBefore: "logos/before.png",
+      defaultAfter: "logos/after.jpg"
+    },
+    {
+      id: 2,
+      title: "2. Perbaikan Layar LCD",
+      desc: "",
+      beforeId: "portofolio-2-before",
+      afterId: "portofolio-2-after",
+      defaultBefore: "logos/before.png",
+      defaultAfter: "logos/after.jpg"
+    },
+    {
+      id: 3,
+      title: "3. Maintenance PC Desktop",
+      desc: "",
+      beforeId: "portofolio-3-before",
+      afterId: "portofolio-3-after",
+      defaultBefore: "https://via.placeholder.com/600x400/4a4a4a/ffffff?text=Sebelum",
+      defaultAfter: "https://via.placeholder.com/600x400/1a1a1a/00E5FF?text=Sesudah"
+    },
+    {
+      id: 4,
+      title: "4. Software & Blue Screen Repair",
+      desc: "",
+      beforeId: "portofolio-4-before",
+      afterId: "portofolio-4-after",
+      defaultBefore: "https://via.placeholder.com/600x400/4a4a4a/ffffff?text=Sebelum",
+      defaultAfter: "https://via.placeholder.com/600x400/1a1a1a/00E5FF?text=Sesudah"
+    }
+  ];
+
+  let htmlContent = '';
+  
+  portfolioData.forEach(item => {
+    // Cek apakah ada deskripsi khusus
+    const descHtml = item.desc ? `<div style="margin-top: 16px; padding: 12px; background: var(--midnight-3); border-radius: 8px; font-size: 13px; color: var(--text-secondary);">${item.desc}</div>` : '';
+
+    htmlContent += `
+      <div class="portfolio-item">
+        <h3 class="portfolio-title">${item.title}</h3>
+        <div class="comparison-slider">
+          ${descHtml}
+          <img id="${item.afterId}" src="${item.defaultAfter}" alt="Sesudah" class="img-after">
+          <img id="${item.beforeId}" src="${item.defaultBefore}" alt="Sebelum" class="img-before">
+          
+          <input type="range" min="0" max="100" value="50" class="slider" aria-label="Geser untuk membandingkan gambar">
+          <div class="slider-line" aria-hidden="true">
+            <div class="slider-button"><i class="fa-solid fa-arrows-left-right"></i></div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = htmlContent;
+  
+  // Panggil ulang fungsi slider logic setelah HTML dicetak
+  initSliderLogic();
+}
+
+// Ubah fungsi slider lama kamu menjadi fungsi yang bisa dipanggil ulang
+function initSliderLogic() {
+  const sliders = document.querySelectorAll('.comparison-slider');
+  sliders.forEach(function(container) {
+    const sliderInput = container.querySelector('.slider');
+    const imgBefore = container.querySelector('.img-before');
+    const sliderLine = container.querySelector('.slider-line');
+    
+    if(sliderInput && imgBefore && sliderLine) {
+        sliderInput.addEventListener('input', function(e) {
+          const pergerakan = e.target.value; 
+          imgBefore.style.width = pergerakan + "%";
+          sliderLine.style.left = pergerakan + "%";
+        });
+    }
+  });
+}
+
+// Jalankan render saat halaman dimuat
+document.addEventListener('DOMContentLoaded', renderPortfolio);
